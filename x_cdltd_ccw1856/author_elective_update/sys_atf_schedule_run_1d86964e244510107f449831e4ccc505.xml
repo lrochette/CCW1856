@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_schedule_run">
+    <sys_atf_schedule_run action="DELETE">
+        <active>true</active>
+        <browser_name>any</browser_name>
+        <browser_version/>
+        <description>Run suite 'CCW1856 Suite' on a system with this configuration:
+Any browser on any version
+Any operating system on any version</description>
+        <order>100</order>
+        <os_name>any</os_name>
+        <os_version/>
+        <schedule display_value="CICD adhoc schedule">c586964e244510107f449831e4ccc503</schedule>
+        <sys_class_name>sys_atf_schedule_run</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-05-29 16:17:52</sys_created_on>
+        <sys_id>1d86964e244510107f449831e4ccc505</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>100</sys_name>
+        <sys_package display_value="CCW1856" source="x_cdltd_ccw1856">b5a05473908010107f4468f7a3a96f5c</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="CCW1856">b5a05473908010107f4468f7a3a96f5c</sys_scope>
+        <sys_update_name>sys_atf_schedule_run_1d86964e244510107f449831e4ccc505</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-05-29 16:17:52</sys_updated_on>
+        <test_suite display_value="CCW1856 Suite">265787f3900810107f4468f7a3a96f7f</test_suite>
+        <watch_list/>
+    </sys_atf_schedule_run>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="CCW1856">b5a05473908010107f4468f7a3a96f5c</application>
+        <file_path/>
+        <instance_id>778a1f8ddb891c10769cc170ba961911</instance_id>
+        <instance_name>nowlearning-lpt0111200-test-001</instance_name>
+        <name>sys_atf_schedule_run_1d86964e244510107f449831e4ccc505</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_schedule_run"><sys_atf_schedule_run action="INSERT_OR_UPDATE"><active>true</active><browser_name>any</browser_name><browser_version/><description>Run suite 'CCW1856 Suite' on a system with this configuration:
+Any browser on any version
+Any operating system on any version</description><order>100</order><os_name>any</os_name><os_version/><schedule display_value="CICD adhoc schedule">c586964e244510107f449831e4ccc503</schedule><sys_class_name>sys_atf_schedule_run</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2020-05-29 16:17:52</sys_created_on><sys_id>1d86964e244510107f449831e4ccc505</sys_id><sys_mod_count>0</sys_mod_count><sys_name>100</sys_name><sys_package display_value="CCW1856" source="x_cdltd_ccw1856">b5a05473908010107f4468f7a3a96f5c</sys_package><sys_policy/><sys_scope display_value="CCW1856">b5a05473908010107f4468f7a3a96f5c</sys_scope><sys_update_name>sys_atf_schedule_run_1d86964e244510107f449831e4ccc505</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2020-05-29 16:17:52</sys_updated_on><test_suite display_value="CCW1856 Suite">265787f3900810107f4468f7a3a96f7f</test_suite><watch_list/></sys_atf_schedule_run></record_update>]]></payload>
+        <payload_hash>1986149354</payload_hash>
+        <record_name>100</record_name>
+        <reverted_from/>
+        <source>6c7ff186244510107f449831e4ccc550</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-05-29 16:17:52</sys_created_on>
+        <sys_id>d586964e244510107f449831e4ccc50a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1726139bb260000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-05-29 16:17:52</sys_updated_on>
+        <type>Scheduled Suite Run</type>
+        <update_guid>1186964e444510104a42bdeb8271710a</update_guid>
+        <update_guid_history>1186964e444510104a42bdeb8271710a:1986149354</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-05-29 16:18:05</sys_created_on>
+        <sys_db_object display_value="" name="sys_atf_schedule_run">sys_atf_schedule_run</sys_db_object>
+        <sys_id>21a521f9428b401d9b1f3b641f805fe1</sys_id>
+        <sys_metadata>1d86964e244510107f449831e4ccc505</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>100</sys_name>
+        <sys_package display_value="CCW1856" source="x_cdltd_ccw1856">b5a05473908010107f4468f7a3a96f5c</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="CCW1856">b5a05473908010107f4468f7a3a96f5c</sys_scope>
+        <sys_scope_delete display_value="">c342593af4a2410681f0669efc1611a4</sys_scope_delete>
+        <sys_update_name>sys_atf_schedule_run_1d86964e244510107f449831e4ccc505</sys_update_name>
+        <sys_update_version display_value="sys_atf_schedule_run_1d86964e244510107f449831e4ccc505">d586964e244510107f449831e4ccc50a</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-05-29 16:18:05</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
