@@ -1,0 +1,10 @@
+pipeline {
+  agent any
+   environment {
+        TEST_INSTANCE = 'https://lrtest1.service-now.com'
+  }
+  stages {
+     stage('build') {
+     }
+  }
+}
