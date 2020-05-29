@@ -40,7 +40,7 @@ pipeline {
           app_post_response = null;
 
           while (app_progress_status != "2" && app_progress_status != "3" && app_progress_status != "4"){
-              def app_progress_response = httpRequest authentication: "service_now_app", acceptType: 'APPLICATION_JSON', contentType: 'APPLICATION_JSON', httpMode: 'GET', url: "${TEST_INSTANCE}/api/sn_cicd/progress/"+app_progress
+              def app_progress_response = httpRequest authentication: "SN-lrtest1", acceptType: 'APPLICATION_JSON', contentType: 'APPLICATION_JSON', httpMode: 'GET', url: "${TEST_INSTANCE}/api/sn_cicd/progress/"+app_progress
 
               def app_progress_json = (new JsonSlurper().parseText(app_progress_response.content))
               echo "${app_progress_json}"
@@ -54,7 +54,7 @@ pipeline {
 
           // get the final app import progress details
 
-          def app_progress_response = httpRequest authentication: "service_now_app", acceptType: 'APPLICATION_JSON', contentType: 'APPLICATION_JSON', httpMode: 'GET', url: "${TEST_INSTANCE}/api/sn_cicd/progress/"+app_progress
+          def app_progress_response = httpRequest authentication: "SN-lrtest1", acceptType: 'APPLICATION_JSON', contentType: 'APPLICATION_JSON', httpMode: 'GET', url: "${TEST_INSTANCE}/api/sn_cicd/progress/"+app_progress
 
           def app_progress_json = (new JsonSlurper().parseText(app_progress_response.content))
 
