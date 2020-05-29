@@ -3,7 +3,7 @@ import groovy.json.JsonSlurper
 pipeline {
   agent any
   environment {
-    TEST_INSTANCE = 'https://lrtest1.service-now.com'
+    TEST_INSTANCE = 'https://lrochette1.service-now.com'
     APP_VERSION = '1.0.1'
     APP_SYS_ID = 'b5a05473908010107f4468f7a3a96f5c'
   }
