@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_step">
+    <sys_atf_step action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <copied_from display_value="Open an Existing Record">9ee78bf3900810107f4468f7a3a96fe9</copied_from>
+        <description>Open the 'CICD Team Setup' form with id '{{Step 1: Record Query.First record}}'</description>
+        <display_name>Open an Existing Record</display_name>
+        <inputs/>
+        <inputs/>
+        <mugshots_cache_json/>
+        <notes/>
+        <order>2</order>
+        <snapshot/>
+        <step_config display_value="Open an Existing Record">5f2e0e535332120028bc29cac2dc34d3</step_config>
+        <sys_class_name>sys_atf_step</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-05-29 21:28:59</sys_created_on>
+        <sys_id>2ebd1b06d50110107f442a7f35ef2d10</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>Open an Existing Record</sys_name>
+        <sys_package display_value="CCW1856" source="x_cdltd_ccw1856">b5a05473908010107f4468f7a3a96f5c</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="CCW1856">b5a05473908010107f4468f7a3a96f5c</sys_scope>
+        <sys_update_name>sys_atf_step_2ebd1b06d50110107f442a7f35ef2d10</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-05-29 21:28:59</sys_updated_on>
+        <table>x_cdltd_ccw1856_cicd_team_setup</table>
+        <test display_value="CCW1956 Pipeline">dabd1b06d50110107f442a7f35ef2d00</test>
+        <timeout/>
+        <warning_message/>
+    </sys_atf_step>
+    <sys_variable_value action="delete_multiple" query="document_key=2ebd1b06d50110107f442a7f35ef2d10"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>2ebd1b06d50110107f442a7f35ef2d10</document_key>
+        <order>300</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-05-29 21:28:59</sys_created_on>
+        <sys_id>2abd1b06d50110107f442a7f35ef2d13</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-05-29 21:28:59</sys_updated_on>
+        <value/>
+        <variable display_value="">6e55da4e53a0220002c6435723dc34a0</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>2ebd1b06d50110107f442a7f35ef2d10</document_key>
+        <order>200</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-05-29 21:28:59</sys_created_on>
+        <sys_id>66bd1b06d50110107f442a7f35ef2d13</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-05-29 21:28:59</sys_updated_on>
+        <value/>
+        <variable display_value="">ad351a4e53a0220002c6435723dc34f0</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>2ebd1b06d50110107f442a7f35ef2d10</document_key>
+        <order>50</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-05-29 21:28:59</sys_created_on>
+        <sys_id>a2bd1b06d50110107f442a7f35ef2d13</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-05-29 21:28:59</sys_updated_on>
+        <value>standard_ui</value>
+        <variable display_value="">17d732a9c7a333005e5c45b881c26007</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>2ebd1b06d50110107f442a7f35ef2d10</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-05-29 21:28:59</sys_created_on>
+        <sys_id>eabd1b06d50110107f442a7f35ef2d13</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-05-29 21:28:59</sys_updated_on>
+        <value>x_cdltd_ccw1856_cicd_team_setup</value>
+        <variable display_value="">b124164e53a0220002c6435723dc34c5</variable>
+    </sys_variable_value>
+    <sys_element_mapping action="delete_multiple" query="id=2ebd1b06d50110107f442a7f35ef2d10"/>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>record_id</field>
+        <id>2ebd1b06d50110107f442a7f35ef2d10</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-05-29 21:28:59</sys_created_on>
+        <sys_id>62bd1b06d50110107f442a7f35ef2d14</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-05-29 21:28:59</sys_updated_on>
+        <table>var__m_atf_input_variable_5f2e0e535332120028bc29cac2dc34d3</table>
+        <value>{{step['e2bd1b06d50110107f442a7f35ef2d08'].first_record}}</value>
+    </sys_element_mapping>
+</record_update>
