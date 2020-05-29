@@ -3,7 +3,7 @@ import groovy.json.JsonSlurper
 pipeline {
   agent any
   environment {
-    TEST_INSTANCE    = 'https://lrtest1.service-now.com'
+  TEST_INSTANCE    = 'https://lrtest1.service-now.com'
     APP_SYS_ID       = 'b5a05473908010107f4468f7a3a96f5c'
     ATF_SUITE_SYS_ID = '9ccea70adb45501030b1d8c75e9619f5'
   }
@@ -171,9 +171,8 @@ pipeline {
 
           atf_result_json = null;
           atf_result_response = null;
-        }
-
-    }   // stage test
-  }     // stages
-
-}       // pipeline
+        }   // script in test
+      }     // steps in test
+    }       // stage test
+  }         // stages
+}           // pipeline
