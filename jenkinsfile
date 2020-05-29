@@ -48,7 +48,7 @@ pipeline {
 
             app_progress_json = null;
             app_progress_response = null;
-            sleep 3 // sleep for 5 seconds
+            sleep 5 // sleep for 5 seconds
         }
 
         // get the final app import progress details
