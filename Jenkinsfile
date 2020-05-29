@@ -3,9 +3,9 @@ import groovy.json.JsonSlurper
 pipeline {
   agent any
   environment {
-    TEST_INSTANCE = 'https://lrochette1.service-now.com'
-    APP_VERSION = '1.0.1'
-    APP_SYS_ID = 'b5a05473908010107f4468f7a3a96f5c'
+    TEST_INSTANCE    = 'https://lrtest1.service-now.com'
+    APP_SYS_ID       = 'b5a05473908010107f4468f7a3a96f5c'
+    ATF_SUITE_SYS_ID = '9ccea70adb45501030b1d8c75e9619f5'
   }
 
   stages {
@@ -21,16 +21,13 @@ pipeline {
           echo "${app_post_json}"
 
           String app_progress = "${app_post_json.result.links.progress.id}";
-
           if(app_progress == null || app_progress == ""){
               currentBuild.description += "Stopping the build - Unable to track apply changes progress <br><br>"
-
               error ('Stopping the build import app progress is not found')
               return
           }
 
           String app_progress_status = "${app_post_json.result.status}";
-
           if(app_progress_status == "3"){
               currentBuild.description += "Stopping the build - Applying changes on the test instance is not successful <br><br>"
               error ('Stopping the build - apply changes for the app on the test instance failed')
@@ -41,7 +38,6 @@ pipeline {
 
           while (app_progress_status != "2" && app_progress_status != "3" && app_progress_status != "4"){
               def app_progress_response = httpRequest authentication: "SN-lrtest1", acceptType: 'APPLICATION_JSON', contentType: 'APPLICATION_JSON', httpMode: 'GET', url: "${TEST_INSTANCE}/api/sn_cicd/progress/"+app_progress
-
               def app_progress_json = (new JsonSlurper().parseText(app_progress_response.content))
               echo "${app_progress_json}"
               app_progress_status = "${app_progress_json.result.status}";
@@ -55,7 +51,6 @@ pipeline {
           // get the final app import progress details
 
           def app_progress_response = httpRequest authentication: "SN-lrtest1", acceptType: 'APPLICATION_JSON', contentType: 'APPLICATION_JSON', httpMode: 'GET', url: "${TEST_INSTANCE}/api/sn_cicd/progress/"+app_progress
-
           def app_progress_json = (new JsonSlurper().parseText(app_progress_response.content))
 
           app_progress_status = "${app_progress_json.result.status}";
@@ -68,9 +63,117 @@ pipeline {
           println("Import App Progress status message is ${app_progress_status_message}")
           println("Import App Progress status detail is ${app_progress_status_detail}")
           println("Import App Progress percent complete is ${app_progress_precent_complete}")
+
+          if(app_progress_status != "2"){
+            currentBuild.description += "Stopping the build - Applying changes on the test instance is not successful because of ${app_progress_status_message} <br><br>"
+             error ('Stopping the build import app is not succesful')
+            return
+          }
+
+          app_progress_json = null
+          app_progress_response = null
+          currentBuild.description += "Applied new commit changes successfully on the instance ${TEST_INSTANCE} <br><br>"
         }
       }
     }
+
+    stage ('test') {
+      steps {
+        snDevOpsStep()
+        script {
+          currentBuild.description += "Executing ATF Test Suites on ${TEST_INSTANCE} <br><br>"
+
+          def atf_post_response = httpRequest authentication: "SN-lrtest1", acceptType: 'APPLICATION_JSON', contentType: 'APPLICATION_JSON', httpMode: 'POST', url: "${TEST_INSTANCE}/api/sn_cicd/testsuite/run?test_suite_sys_id=${ATF_SUITE_SYS_ID}"
+          def atf_post_json = new JsonSlurper().parseText(atf_post_response.content)
+
+          echo "${atf_post_json}"
+
+          // take progress id from the atf suite response and track it
+
+          String atf_progress = "${atf_post_json.result.links.progress.id}";
+
+          if (atf_progress == null || atf_progress == "") {
+              currentBuild.description += "Stopping the build - Unable to track ATF suite execution progress <br><br>"
+
+              error ('Stopping the build because of no atf suite prgress')
+              return
+          }
+          String atf_progress_status = "${atf_post_json.result.status}";
+
+          if(atf_progress_status == "3"){
+              currentBuild.description += "Stopping the build - ATF suite start failed <br><br>"
+
+              error ('Stopping the build ATF Suite start failed')
+              return
+          }
+          atf_post_json = null;
+
+          while (atf_progress_status != "2" && atf_progress_status != "3" && atf_progress_status != "4"){
+              def atf_progress_response = httpRequest authentication: "SN-lrtest1", acceptType: 'APPLICATION_JSON', contentType: 'APPLICATION_JSON', httpMode: 'GET', url: "${TEST_INSTANCE}/api/sn_cicd/progress/"+atf_progress
+
+              def atf_progress_json = (new JsonSlurper().parseText(atf_progress_response.content))
+              echo "${atf_progress_json}"
+              atf_progress_status = "${atf_progress_json.result.status}";
+              println("ATF Suite progress status is ${atf_progress_status}");
+
+              atf_progress_json = null;
+              atf_progress_response = null;
+              sleep 3 // sleep for 5 seconds
+          }
+
+          // get the final progress details
+
+          def atf_progress_response = httpRequest authentication: "SN-lrtest1", acceptType: 'APPLICATION_JSON', contentType: 'APPLICATION_JSON', httpMode: 'GET', url: "${TEST_INSTANCE}/api/sn_cicd/progress/"+atf_progress
+          def atf_progress_json = (new JsonSlurper().parseText(atf_progress_response.content))
+
+          atf_progress_status = "${atf_progress_json.result.status}";
+          String progress_status_label = "${atf_progress_json.result.status_label}";
+          String progress_status_message = "${atf_progress_json.result.status_message}";
+          String progress_result = "${atf_progress_json.result.links.results.id}";
+          String progress_result_url = "${atf_progress_json.result.links.results.url}";
+          String progress_precent_complete = "${atf_progress_json.result.percent_complete}";
+
+          println("Progress status is ${atf_progress_status}")
+          println("Progress status label is ${progress_status_label}")
+          println("Progress status message is ${progress_status_message}")
+          println("Result ID is ${progress_result}")
+          println("Result url is ${progress_result_url}")
+          println("Progress percent complete is ${progress_precent_complete}")
+
+          atf_progress_json = null;
+          atf_progress_response = null;
+
+          if (progress_result == null || progress_result == "") {
+              currentBuild.description += "Stopping the build - ATF suite result not found  because of ${progress_status_message}<br><br>"
+              error('Stopping the build because of no atf suite result')
+              return
+          }
+
+          // Now get the results:
+          def atf_result_response = httpRequest authentication: "SN-lrtest1", acceptType: 'APPLICATION_JSON', contentType: 'APPLICATION_JSON', httpMode: 'GET', url: "${TEST_INSTANCE}/api/sn_cicd/testsuite/results/"+progress_result
+          def atf_result_json = (new JsonSlurper().parseText(atf_result_response.content))
+
+          String atf_result_status = "${atf_result_json.result.test_suite_status}";
+
+          echo "${atf_result_json}"
+
+          if (atf_result_status != "success" && atf_result_status != "success_with_warnings") {
+              currentBuild.description += "Stopping the build - Atf suite run is not successful <br><br>"
+              error('Stopping the build because Atf suite run is not successful')
+              return
+          }
+
+          currentBuild.description += "ATF Tests ran successfully <br><br> Test Suite Name : ${atf_result_json.result.test_suite_name} <br>"
+          currentBuild.description += "Test Suite result URL : ${atf_result_json.result.links.results.url} <br>"
+          currentBuild.description += "Test Suite total run duration is : ${atf_result_json.result.test_suite_duration}) <br>"
+          currentBuild.description += "Test Suite total success count is : ${atf_result_json.result.rolledup_test_success_count} <br>"
+
+
+          atf_result_json = null;
+          atf_result_response = null;
+        }
+
+    }   // stage test
   }     // stages
 
 }       // pipeline
