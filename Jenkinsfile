@@ -7,14 +7,14 @@ pipeline {
     APP_VERSION = '1.0.1'
     APP_SYS_ID = 'b5a05473908010107f4468f7a3a96f5c'
   }
-  stages {
+  node() {
     stage('build') {
       steps {
         snDevOpsStep()
         script {
           // import the app on to test instance
 
-          def app_post_response = httpRequest authentication: "service_now_app", acceptType: 'APPLICATION_JSON', contentType: 'APPLICATION_JSON', httpMode: 'POST', url: "${TEST_INSTANCE}/api/sn_cicd/sc/apply_changes?app_sys_id=${APP_SYS_ID}"
+          def app_post_response = httpRequest authentication: "SN-lrtest1", acceptType: 'APPLICATION_JSON', contentType: 'APPLICATION_JSON', httpMode: 'POST', url: "${TEST_INSTANCE}/api/sn_cicd/sc/apply_changes?app_sys_id=${APP_SYS_ID}"
           def app_post_json = new JsonSlurper().parseText(app_post_response.content)
 
           echo "${app_post_json}"
@@ -24,7 +24,7 @@ pipeline {
           if(app_progress == null || app_progress == ""){
               currentBuild.description += "Stopping the build - Unable to track apply changes progress <br><br>"
 
-              error ('Stopping the build import app prgress is not found')
+              error ('Stopping the build import app progress is not found')
               return
           }
 
