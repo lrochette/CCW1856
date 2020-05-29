@@ -7,11 +7,11 @@ pipeline {
     APP_VERSION = '1.0.1'
     APP_SYS_ID = 'b5a05473908010107f4468f7a3a96f5c'
   }
-  node() {
+  pipeline {
     stage('build') {
       steps {
         snDevOpsStep()
-        script {
+//       script {
           // import the app on to test instance
 
           def app_post_response = httpRequest authentication: "SN-lrtest1", acceptType: 'APPLICATION_JSON', contentType: 'APPLICATION_JSON', httpMode: 'POST', url: "${TEST_INSTANCE}/api/sn_cicd/sc/apply_changes?app_sys_id=${APP_SYS_ID}"
@@ -67,7 +67,7 @@ pipeline {
           println("Import App Progress status message is ${app_progress_status_message}")
           println("Import App Progress status detail is ${app_progress_status_detail}")
           println("Import App Progress percent complete is ${app_progress_precent_complete}")
-        }
+//        }
       }
     }
   }
