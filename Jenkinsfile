@@ -4,6 +4,7 @@ pipeline {
   agent any
   environment {
     TEST_INSTANCE    = 'https://lrtest1.service-now.com'
+    PROD_INSTANCE    = 'https://lrochette1.service-now.com'
     APP_SYS_ID       = 'b5a05473908010107f4468f7a3a96f5c'
     ATF_SUITE_NAME   = 'CCW1856 Suite'
   }
@@ -174,5 +175,15 @@ pipeline {
         }   // script in test
       }     // steps in test
     }       // stage test
+
+    stage('prod') {
+      steps {
+        snDevOpsStep()
+        snDevOpsChange()
+        sh 'sleep 15'
+        sh 'echo Installing to Prod'
+      }
+
+    }
   }         // stages
 }           // pipeline
