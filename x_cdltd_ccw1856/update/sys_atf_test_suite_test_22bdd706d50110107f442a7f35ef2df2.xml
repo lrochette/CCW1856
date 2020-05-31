@@ -15,6 +15,6 @@
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2020-05-29 21:28:59</sys_updated_on>
         <test display_value="CCW1956 Pipeline">dabd1b06d50110107f442a7f35ef2d00</test>
-        <test_suite display_value="CCW1856 Suite">265787f3900810107f4468f7a3a96f7f</test_suite>
+        <test_suite display_value="">265787f3900810107f4468f7a3a96f7f</test_suite>
     </sys_atf_test_suite_test>
 </record_update>

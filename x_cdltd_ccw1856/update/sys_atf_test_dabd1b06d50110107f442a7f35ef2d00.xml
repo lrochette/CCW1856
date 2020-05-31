@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_test">
     <sys_atf_test action="INSERT_OR_UPDATE">
         <active>true</active>
-        <copied_from display_value="CCW1956 Pipeline Test">eb978bf3900810107f4468f7a3a96f1c</copied_from>
+        <copied_from display_value="">eb978bf3900810107f4468f7a3a96f1c</copied_from>
         <description/>
         <enable_parameterized_testing>false</enable_parameterized_testing>
         <name>CCW1956 Pipeline</name>

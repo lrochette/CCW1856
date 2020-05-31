@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_step">
     <sys_atf_step action="INSERT_OR_UPDATE">
         <active>true</active>
-        <copied_from display_value="Field Values Validation">2ff74ff3900810107f4468f7a3a96fb1</copied_from>
+        <copied_from display_value="">2ff74ff3900810107f4468f7a3a96fb1</copied_from>
         <description>Validate that the form matches the following condition:
 Environment Setup is not empty
 and Name is not empty

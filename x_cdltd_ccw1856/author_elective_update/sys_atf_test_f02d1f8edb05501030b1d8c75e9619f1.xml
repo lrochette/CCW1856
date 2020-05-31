@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_test">
+    <sys_atf_test action="DELETE">
+        <active>true</active>
+        <copied_from/>
+        <description/>
+        <enable_parameterized_testing>false</enable_parameterized_testing>
+        <name>CCW1956 Pipeline Test</name>
+        <parameters/>
+        <remember/>
+        <sys_class_name>sys_atf_test</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-05-29 21:26:39</sys_created_on>
+        <sys_id>f02d1f8edb05501030b1d8c75e9619f1</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>CCW1956 Pipeline Test</sys_name>
+        <sys_package display_value="CCW1856" source="x_cdltd_ccw1856">b5a05473908010107f4468f7a3a96f5c</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="CCW1856">b5a05473908010107f4468f7a3a96f5c</sys_scope>
+        <sys_update_name>sys_atf_test_f02d1f8edb05501030b1d8c75e9619f1</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-05-29 21:26:39</sys_updated_on>
+    </sys_atf_test>
+    <sys_variable_value action="DELETE" query="document_key=f02d1f8edb05501030b1d8c75e9619f1"/>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="CCW1856">b5a05473908010107f4468f7a3a96f5c</application>
+        <file_path/>
+        <instance_id>5c4c0eb3db3c5854f37acac505961967</instance_id>
+        <instance_name>lrdev1</instance_name>
+        <name>sys_atf_test_f02d1f8edb05501030b1d8c75e9619f1</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_test"><sys_atf_test action="INSERT_OR_UPDATE"><active>true</active><copied_from/><description/><enable_parameterized_testing>false</enable_parameterized_testing><name>CCW1956 Pipeline Test</name><parameters/><remember/><sys_class_name>sys_atf_test</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2020-05-29 21:26:39</sys_created_on><sys_id>f02d1f8edb05501030b1d8c75e9619f1</sys_id><sys_mod_count>0</sys_mod_count><sys_name>CCW1956 Pipeline Test</sys_name><sys_package display_value="CCW1856" source="x_cdltd_ccw1856">b5a05473908010107f4468f7a3a96f5c</sys_package><sys_policy/><sys_scope display_value="CCW1856">b5a05473908010107f4468f7a3a96f5c</sys_scope><sys_update_name>sys_atf_test_f02d1f8edb05501030b1d8c75e9619f1</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2020-05-29 21:26:39</sys_updated_on></sys_atf_test><sys_variable_value action="delete_multiple" query="document_key=f02d1f8edb05501030b1d8c75e9619f1"/></record_update>]]></payload>
+        <payload_hash>290474648</payload_hash>
+        <record_name>CCW1956 Pipeline Test</record_name>
+        <reverted_from/>
+        <source>40477acadbc1501030b1d8c75e9619a9</source>
+        <source_table>sys_update_set</source_table>
+        <state>current</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-05-29 21:26:40</sys_created_on>
+        <sys_id>903d5f8edb05501030b1d8c75e961916</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>17262546e8a0000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-05-29 21:26:40</sys_updated_on>
+        <type>Test</type>
+        <update_guid>d83d5f8e9205501047f4118bdebe9c15</update_guid>
+        <update_guid_history>d83d5f8e9205501047f4118bdebe9c15:290474648</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-05-29 21:32:44</sys_created_on>
+        <sys_db_object display_value="" name="sys_atf_test">sys_atf_test</sys_db_object>
+        <sys_id>48cc759d1e1e4df893569d1d8a4b3640</sys_id>
+        <sys_metadata>f02d1f8edb05501030b1d8c75e9619f1</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>CCW1956 Pipeline Test</sys_name>
+        <sys_package display_value="CCW1856" source="x_cdltd_ccw1856">b5a05473908010107f4468f7a3a96f5c</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="CCW1856">b5a05473908010107f4468f7a3a96f5c</sys_scope>
+        <sys_scope_delete display_value="">c342593af4a2410681f0669efc1611a4</sys_scope_delete>
+        <sys_update_name>sys_atf_test_f02d1f8edb05501030b1d8c75e9619f1</sys_update_name>
+        <sys_update_version display_value="sys_atf_test_f02d1f8edb05501030b1d8c75e9619f1">903d5f8edb05501030b1d8c75e961916</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-05-29 21:32:44</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
