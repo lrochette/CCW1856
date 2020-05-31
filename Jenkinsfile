@@ -3,9 +3,9 @@ import groovy.json.JsonSlurper
 pipeline {
   agent any
   environment {
-  TEST_INSTANCE    = 'https://lrtest1.service-now.com'
+    TEST_INSTANCE    = 'https://lrtest1.service-now.com'
     APP_SYS_ID       = 'b5a05473908010107f4468f7a3a96f5c'
-    ATF_SUITE_SYS_ID = '9ccea70adb45501030b1d8c75e9619f5'
+    ATF_SUITE_NAME   = 'CCW1856 Suite'
   }
 
   stages {
@@ -83,7 +83,7 @@ pipeline {
         script {
           currentBuild.description += "Executing ATF Test Suites on ${TEST_INSTANCE} <br><br>"
 
-          def atf_post_response = httpRequest authentication: "SN-lrtest1", acceptType: 'APPLICATION_JSON', contentType: 'APPLICATION_JSON', httpMode: 'POST', url: "${TEST_INSTANCE}/api/sn_cicd/testsuite/run?test_suite_sys_id=${ATF_SUITE_SYS_ID}"
+          def atf_post_response = httpRequest authentication: "SN-lrtest1", acceptType: 'APPLICATION_JSON', contentType: 'APPLICATION_JSON', httpMode: 'POST', url: "${TEST_INSTANCE}/api/sn_cicd/testsuite/run?test_suite_name=${ATF_SUITE_NAME}"
           def atf_post_json = new JsonSlurper().parseText(atf_post_response.content)
 
           echo "${atf_post_json}"
