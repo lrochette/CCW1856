@@ -6,7 +6,7 @@ pipeline {
     TEST_INSTANCE    = 'https://lrtest1.service-now.com'
     PROD_INSTANCE    = 'https://lrochette1.service-now.com'
     APP_SYS_ID       = 'b5a05473908010107f4468f7a3a96f5c'
-    ATF_SUITE_NAME   = 'CCW1856 Suite'
+    ATF_SUITE_NAME   = 'CCW1856%20Suite'
   }
 
   stages {
