@@ -67,7 +67,7 @@ pipeline {
 
           if(app_progress_status != "2"){
             currentBuild.description += "Stopping the build - Applying changes on the test instance is not successful because of ${app_progress_status_message} <br><br>"
-             error ('Stopping the build import app is not succesful')
+             error ('Stopping the build import app is not successful')
             return
           }
 
@@ -184,7 +184,7 @@ pipeline {
           // publish the app to the repo
           currentBuild.description += "<br>publishing the app to the App-Store <br>"
 
-          def app_publish_response = httpRequest authentication: "service_now_app", acceptType: 'APPLICATION_JSON', contentType: 'APPLICATION_JSON', httpMode: 'POST', url: "${TEST_INSTANCE}/api/sn_cicd/app_repo/publish?sys_id=${APP_SYS_ID}"
+          def app_publish_response = httpRequest authentication: "SN-lrtest1"", acceptType: 'APPLICATION_JSON', contentType: 'APPLICATION_JSON', httpMode: 'POST', url: "${TEST_INSTANCE}/api/sn_cicd/app_repo/publish?sys_id=${APP_SYS_ID}"
           def app_publish_json = (new JsonSlurper().parseText(app_publish_response.content))
           String app_publish_status = "${app_publish_json.result.status}";
           echo "${app_publish_json}"
@@ -198,7 +198,7 @@ pipeline {
 
           String app_publish_progress_status = "${app_publish_json.result.status}";
           if(app_publish_progress_status == "3"){
-              currentBuild.description += "Stopping the build publish app is not succesful<br><br>"
+              currentBuild.description += "Stopping the build publish app is not successful<br><br>"
               error ('Stopping the build APP publish failed')
               return
           }
@@ -206,7 +206,7 @@ pipeline {
           app_publish_response = null;
 
           while (app_publish_progress_status != "2" && app_publish_progress_status != "3" && app_publish_progress_status != "4"){
-              def app_publish_progress_response = httpRequest authentication: "service_now_app", acceptType: 'APPLICATION_JSON', contentType: 'APPLICATION_JSON', httpMode: 'GET', url: "${TEST_INSTANCE}/api/sn_cicd/progress/"+app_publish_progress
+              def app_publish_progress_response = httpRequest authentication: "SN-lrtest1"", acceptType: 'APPLICATION_JSON', contentType: 'APPLICATION_JSON', httpMode: 'GET', url: "${TEST_INSTANCE}/api/sn_cicd/progress/"+app_publish_progress
               def app_publish_progress_json = (new JsonSlurper().parseText(app_publish_progress_response.content))
               echo "${app_publish_progress_json}"
               app_publish_progress_status = "${app_publish_progress_json.result.status}";
@@ -218,7 +218,7 @@ pipeline {
           }
 
           // get the final app publish progress details
-          def app_publish_progress_response = httpRequest authentication: "service_now_app", acceptType: 'APPLICATION_JSON', contentType: 'APPLICATION_JSON', httpMode: 'GET', url: "${TEST_INSTANCE}/api/sn_cicd/progress/"+app_publish_progress
+          def app_publish_progress_response = httpRequest authentication: "SN-lrtest1"", acceptType: 'APPLICATION_JSON', contentType: 'APPLICATION_JSON', httpMode: 'GET', url: "${TEST_INSTANCE}/api/sn_cicd/progress/"+app_publish_progress
           def app_publish_progress_json = (new JsonSlurper().parseText(app_publish_progress_response.content))
           app_publish_progress_status = "${app_publish_progress_json.result.status}";
           String app_publish_progress_status_label = "${app_publish_progress_json.result.status_label}";
@@ -232,18 +232,18 @@ pipeline {
           println("App publish Progress percent complete is ${app_publish_progress_precent_complete}")
 
           if(app_publish_progress_status != "2"){
-              currentBuild.description += "Stopping the build publish app is not succesful becaue of ${app_publish_progress_status_message}<br><br>"
-               error ('Stopping the build publish app is not succesful')
+              currentBuild.description += "Stopping the build publish app is not successful because of ${app_publish_progress_status_message}<br><br>"
+               error ('Stopping the build publish app is not successful')
               return
           }
-
           app_publish_progress_json = null
           app_publish_progress_response = null
 
           currentBuild.description += "App successfully published to the App-Store <br><br>"
         }   // script in publish
-      }
-    }
+      }     // steps in publish
+    }       // stage publish
+
     stage('prod') {
       steps {
         snDevOpsStep()
