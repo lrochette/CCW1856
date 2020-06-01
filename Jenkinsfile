@@ -7,6 +7,7 @@ pipeline {
     PROD_INSTANCE    = 'https://lrochette1.service-now.com'
     APP_SYS_ID       = 'b5a05473908010107f4468f7a3a96f5c'
     ATF_SUITE_NAME   = 'CCW1856%20Suite'
+    ATF_FILE_RESULT  = "ATF-results/results.xml"
   }
 
   stages {
@@ -156,9 +157,15 @@ pipeline {
           def atf_result_json = (new JsonSlurper().parseText(atf_result_response.content))
 
           String atf_result_status = "${atf_result_json.result.test_suite_status}";
+          String atf_success_count = "${atf_result_json.result.rolledup_test_success_count}";
+          String atf_failure_count = "${atf_result_json.result.rolledup_test_failure_count}";
+          String atf_duration =
+          // Save result as JUnit
+          echo '<?xml version="1.0" encoding="UTF-8"?>' > ${ATF_FILE_RESULT}
+          echo "  <testsuites errors=\"${atf_failure_count}\" name=\"${atf_result_json.result.test_suite_name}\" duration=\"{atf_result_json.result.test_suite_duration}\" >" >> ${ATF_FILE_RESULT}
+          echo "</testsuites>" >> ${ATF_FILE_RESULT}
 
           echo "${atf_result_json}"
-
           if (atf_result_status != "success" && atf_result_status != "success_with_warnings") {
               currentBuild.description += "Stopping the build - Atf suite run is not successful <br><br>"
               error('Stopping the build because Atf suite run is not successful')
@@ -175,6 +182,11 @@ pipeline {
 
         }   // script in test
       }     // steps in test
+      post {
+          success {
+              junit "**/${ATF_FILE_RESULT}"
+          }
+      }
     }       // stage test
 
 /* Comment until the issue with app store is resolved
@@ -250,7 +262,7 @@ pipeline {
     stage('prod') {
       steps {
         snDevOpsStep()
-        snDevOpsPackage(name: "Nomura-package", artifactsPayload: """{"artifacts": [{"name": "CCW1856.xml", "version": "1.0.$BUILD_NUMBER","repositoryName": "CCW"}]}""")
+        snDevOpsPackage(name: "CCW1856 Scoped App", artifactsPayload: """{"artifacts": [{"name": "CCW1856.xml", "version": "1.0.$BUILD_NUMBER","repositoryName": "CCW"}]}""")
         snDevOpsChange()
         sh 'sleep 15'
         sh 'echo Installing to Prod'
