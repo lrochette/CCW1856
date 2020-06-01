@@ -161,8 +161,8 @@ pipeline {
           String atf_failure_count = "${atf_result_json.result.rolledup_test_failure_count}";
           String atf_duration =
           // Save result as JUnit
-          echo '<?xml version="1.0" encoding="UTF-8"?>' > ${ATF_FILE_RESULT}
-          echo "<testsuites errors=\"${atf_failure_count}\" name=\"${atf_result_json.result.test_suite_name}\" duration=\"{atf_result_json.result.test_suite_duration}\" >" >> ${ATF_FILE_RESULT}
+          echo '<?xml version="1.0" encoding="UTF-8"?>' > ${ATF_FILE_RESULTt
+          echo "<testsuites errors=\"${atf_failure_count}\" name=\"${atf_result_json.result.test_suite_name}\" tests=\"${atf_success_count}\" time=\"{atf_result_json.result.test_suite_duration}\" >" >> ${ATF_FILE_RESULT}
           echo "</testsuites>" >> ${ATF_FILE_RESULT}
 
           echo "${atf_result_json}"
