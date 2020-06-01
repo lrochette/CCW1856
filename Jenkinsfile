@@ -74,6 +74,7 @@ pipeline {
           app_progress_json = null
           app_progress_response = null
           currentBuild.description += "Applied new commit changes successfully on the instance ${TEST_INSTANCE} <br><br>"
+          snDevOpsArtifact(artifactsPayload: """{"artifacts": [{"name": "CCW1856.xml", "version": "1.0.$BUILD_NUMBER","semanticVersion": "1.0.$BUILD_NUMBER","repositoryName": "CCW"}]}""")
         }
       }
     }
@@ -171,6 +172,7 @@ pipeline {
 
           atf_result_json = null;
           atf_result_response = null;
+
         }   // script in test
       }     // steps in test
     }       // stage test
@@ -179,7 +181,6 @@ pipeline {
     stage('publish') {
       steps {
         snDevOpsStep()
-        snDevOpsArtifact(artifactsPayload: """{"artifacts": [{"name": "CCW1856.xml", "version": "1.0.$BUILD_NUMBER","semanticVersion": "1.0.$BUILD_NUMBER","repositoryName": "CCW"}]}""")
 
         script {
           // publish the app to the repo
@@ -249,6 +250,7 @@ pipeline {
     stage('prod') {
       steps {
         snDevOpsStep()
+        snDevOpsPackage(name: "Nomura-package", artifactsPayload: """{"artifacts": [{"name": "CCW1856.xml", "version": "1.0.$BUILD_NUMBER","repositoryName": "CCW"}]}""")
         snDevOpsChange()
         sh 'sleep 15'
         sh 'echo Installing to Prod'
