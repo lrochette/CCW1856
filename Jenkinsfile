@@ -103,7 +103,7 @@ pipeline {
           }
           String atf_progress_status = "${atf_post_json.result.status}";
 
-          if(atf_progress_status == "3"){
+          if (atf_progress_status == "3") {
               currentBuild.description += "Stopping the build - ATF suite start failed <br><br>"
 
               error ('Stopping the build ATF Suite start failed')
@@ -111,7 +111,7 @@ pipeline {
           }
           atf_post_json = null;
 
-          while (atf_progress_status != "2" && atf_progress_status != "3" && atf_progress_status != "4"){
+          while (atf_progress_status != "2" && atf_progress_status != "3" && atf_progress_status != "4") {
               def atf_progress_response = httpRequest authentication: "SN-lrtest1", acceptType: 'APPLICATION_JSON', contentType: 'APPLICATION_JSON', httpMode: 'GET', url: "${TEST_INSTANCE}/api/sn_cicd/progress/"+atf_progress
 
               def atf_progress_json = (new JsonSlurper().parseText(atf_progress_response.content))
@@ -161,7 +161,7 @@ pipeline {
           String atf_failure_count = "${atf_result_json.result.rolledup_test_failure_count}";
           String atf_duration =
           // Save result as JUnit
-          echo '<?xml version="1.0" encoding="UTF-8"?>' > ${ATF_FILE_RESULTt
+          echo '<?xml version="1.0" encoding="UTF-8"?>' > ${ATF_FILE_RESULT}
           echo "<testsuites errors=\"${atf_failure_count}\" name=\"${atf_result_json.result.test_suite_name}\" tests=\"${atf_success_count}\" time=\"{atf_result_json.result.test_suite_duration}\" >" >> ${ATF_FILE_RESULT}
           echo "</testsuites>" >> ${ATF_FILE_RESULT}
 
@@ -269,6 +269,6 @@ pipeline {
         sh 'echo Installing to Prod'
       }
 
-    }
+    }       // stage prod
   }         // stages
 }           // pipeline
