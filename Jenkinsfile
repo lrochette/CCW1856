@@ -161,7 +161,8 @@ pipeline {
           String atf_result_status = "${atf_result_json.result.test_suite_status}";
           String atf_success_count = "${atf_result_json.result.rolledup_test_success_count}";
           String atf_failure_count = "${atf_result_json.result.rolledup_test_failure_count}";
-          String atf_duration =
+          String atf_duration = "${atf_result_json.result.test_suite_duration}";
+
           // Save result as JUnit
           println("Saving results to ${ATF_FILE_RESULT}")
           sh """
