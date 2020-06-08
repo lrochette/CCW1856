@@ -7,7 +7,8 @@ pipeline {
     PROD_INSTANCE    = 'https://lrochette1.service-now.com'
     APP_SYS_ID       = 'b5a05473908010107f4468f7a3a96f5c'
     ATF_SUITE_NAME   = 'CCW1856%20Suite'
-    ATF_FILE_RESULT  = "ATF-results/results.xml"
+    AFT_FOLDER       = "ATF-results"
+    ATF_FILE_RESULT  = "${ATF_FOLDER}/results.xml"
   }
 
   stages {
@@ -164,7 +165,7 @@ pipeline {
           // Save result as JUnit
           println("Saving results to ${ATF_FILE_RESULT}")
           sh """
-            mkdir -p ATF_results
+            mkdir -p $ATF_FOLDER
             echo '<?xml version="1.0" encoding="UTF-8"?>' > ${ATF_FILE_RESULT}
             echo "<testsuites errors=\"${atf_failure_count}\" name=\"${atf_result_json.result.test_suite_name}\" tests=\"${atf_success_count}\" time=\"{atf_result_json.result.test_suite_duration}\" >" >> ${ATF_FILE_RESULT}
             echo "</testsuites>" >> ${ATF_FILE_RESULT}
