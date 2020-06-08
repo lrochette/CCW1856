@@ -191,7 +191,6 @@ pipeline {
       }
     }       // stage test
 
-/* Comment until the issue with app store is resolved
     stage('publish') {
       steps {
         snDevOpsStep()
@@ -259,7 +258,7 @@ pipeline {
         }   // script in publish
       }     // steps in publish
     }       // stage publish
-*/
+
 
     stage('prod') {
       steps {
