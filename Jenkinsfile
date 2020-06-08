@@ -163,13 +163,17 @@ pipeline {
           String atf_duration =
           // Save result as JUnit
           println("Saving results to ${ATF_FILE_RESULT}")
-          echo '<?xml version="1.0" encoding="UTF-8"?>' > ${ATF_FILE_RESULT}
-          echo "<testsuites errors=\"${atf_failure_count}\" name=\"${atf_result_json.result.test_suite_name}\" tests=\"${atf_success_count}\" time=\"{atf_result_json.result.test_suite_duration}\" >" >> ${ATF_FILE_RESULT}
-          echo "</testsuites>" >> ${ATF_FILE_RESULT}
+          sh """
+            mkdir -p ATF_results
+            echo '<?xml version="1.0" encoding="UTF-8"?>' > ${ATF_FILE_RESULT}
+            echo "<testsuites errors=\"${atf_failure_count}\" name=\"${atf_result_json.result.test_suite_name}\" tests=\"${atf_success_count}\" time=\"{atf_result_json.result.test_suite_duration}\" >" >> ${ATF_FILE_RESULT}
+            echo "</testsuites>" >> ${ATF_FILE_RESULT}
 
-          echo "${atf_result_json}"
-          cat ${ATF_FILE_RESULT}
-
+            echo "${atf_result_json}"
+            cat ${ATF_FILE_RESULT}
+            ls -ail .
+            ls -ail ATF_results
+          """
           if (atf_result_status != "success" && atf_result_status != "success_with_warnings") {
               currentBuild.description += "Stopping the build - Atf suite run is not successful <br><br>"
               error('Stopping the build because Atf suite run is not successful')
