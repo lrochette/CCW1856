@@ -281,7 +281,7 @@ pipeline {
         // snDevOpsChange()
 
         script {
-          def app_install_response = httpRequest authentication: "SN-lruat1", acceptType: 'APPLICATION_JSON', contentType: 'APPLICATION_JSON', httpMode: 'POST', url: "${PROD_INSTANCE}/api/sn_cicd/app_repo/install?sys_id=${APP_SYS_ID}&&version=${VERSION}"
+          def app_install_response = httpRequest authentication: "SN-lruat1", acceptType: 'APPLICATION_JSON', contentType: 'APPLICATION_JSON', httpMode: 'POST', url: "${PROD_INSTANCE}/api/sn_cicd/app_repo/install?sys_id=${APP_SYS_ID}&version=${VERSION}"
           def app_install_json = (new JsonSlurper().parseText(app_install_response.content))
 
           String app_install_status = "${app_install_json.result.status}";
