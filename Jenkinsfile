@@ -177,6 +177,10 @@ pipeline {
           currentBuild.description += "Test Suite total run duration is : ${atf_result_json.result.test_suite_duration}) <br>"
           currentBuild.description += "Test Suite total success count is : ${atf_result_json.result.rolledup_test_success_count} <br>"
 
+          sh """
+            echo "Creating ATF result folder ${ATF_FOLDER}"
+            mkdir -p ${ATF_FOLDER}
+          """
           atf_result_json = null;
           atf_result_response = null;
 
