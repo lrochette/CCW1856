@@ -85,7 +85,7 @@ pipeline {
       steps {
         snDevOpsStep()
         script {
-          currentBuild.description += "Executing ATF Test Suites on ${TEST_INSTANCE} <br><br>"
+          currentBuild.description += "Executing ATF Test Suites on ${TEST_INSTANCE}\n\n"
 
           def atf_post_response = httpRequest authentication: "SN-lrtest1", acceptType: 'APPLICATION_JSON', contentType: 'APPLICATION_JSON', httpMode: 'POST', url: "${TEST_INSTANCE}/api/sn_cicd/testsuite/run?test_suite_name=${ATF_SUITE_NAME}"
           def atf_post_json = new JsonSlurper().parseText(atf_post_response.content)
@@ -167,8 +167,8 @@ pipeline {
           println("Saving results to ${ATF_FILE_RESULT}")
 
           if (atf_result_status != "success" && atf_result_status != "success_with_warnings") {
-              currentBuild.description += "Stopping the build - Atf suite run is not successful <br><br>"
-              error('Stopping the build because Atf suite run is not successful')
+              currentBuild.description += "Stopping the build - ATF suite run is not successful <br><br>"
+              error('Stopping the build because ATF suite run is not successful')
               return
           }
 
@@ -182,11 +182,12 @@ pipeline {
 
         }   // script in test
       }     // steps in test
-      post {
+/*      post {
           success {
-              junit "**/${ATF_FILE_RESULT}"
+              junit "${ATF_FILE_RESULT}"
           }
       }
+*/
     }       // stage test
 
     stage('publish') {
