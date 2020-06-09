@@ -18,6 +18,7 @@ pipeline {
         script {
           // import the app on to test instance
 
+          currentBuild.description = ""
           def app_post_response = httpRequest authentication: "SN-lrtest1", acceptType: 'APPLICATION_JSON', contentType: 'APPLICATION_JSON', httpMode: 'POST', url: "${TEST_INSTANCE}/api/sn_cicd/sc/apply_changes?app_sys_id=${APP_SYS_ID}"
           def app_post_json = new JsonSlurper().parseText(app_post_response.content)
 
@@ -193,12 +194,11 @@ pipeline {
         }   // script in test
 
       }     // steps in test
-/*      post {
+      post {
           success {
               junit "${ATF_FILE_RESULT}"
           }
       }
-*/
     }       // stage test
 
     stage('publish') {
