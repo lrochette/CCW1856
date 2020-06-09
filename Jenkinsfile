@@ -187,8 +187,7 @@ pipeline {
   time="${atf_result_json.result.test_suite_duration}" >
 </testsuites>\n"""
           writeFile file: ATF_FILE_RESULT, text: xmlStr
-          sh "cat ${ATF_FILE_RESULT}"
-          
+          echo "XML Results: $xmlStr"
           atf_result_json = null;
           atf_result_response = null;
 
