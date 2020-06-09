@@ -163,15 +163,13 @@ pipeline {
           String atf_failure_count = "${atf_result_json.result.rolledup_test_failure_count}";
           String atf_duration = "${atf_result_json.result.test_suite_duration}";
 
-          // Save result as JUnit
-          println("Saving results to ${ATF_FILE_RESULT}")
-
           if (atf_result_status != "success" && atf_result_status != "success_with_warnings") {
               currentBuild.description += "Stopping the build - ATF suite run is not successful <br><br>"
               error('Stopping the build because ATF suite run is not successful')
               return
           }
 
+          // Save result as JUnit
           currentBuild.description += "ATF Tests ran successfully <br><br> Test Suite Name : ${atf_result_json.result.test_suite_name} <br>"
           currentBuild.description += "Test Suite result URL : ${atf_result_json.result.links.results.url} <br>"
           currentBuild.description += "Test Suite total run duration is : ${atf_result_json.result.test_suite_duration}) <br>"
@@ -180,13 +178,15 @@ pipeline {
           echo "Creating ATF result folder ${ATF_FOLDER}"
           fileOperations([folderCreateOperation(${ATF_FOLDER})])
 
+          echo "Saving Results into ${ATF_FILE_RESULT}"
           def xmlStr='<?xml version="1.0" encoding="UTF-8"?>\n'
           xmlStr += "<testsuites errors=\"${atf_failure_count}\" "
           xmlStr += "name=\"${atf_result_json.result.test_suite_name}\" "
           xmlStr += "tests=\"${atf_success_count}\" "
-          xmlStr += "time=\"{atf_result_json.result.test_suite_duration}\" >\n"
+          xmlStr += "time=\"${atf_result_json.result.test_suite_duration}\" >\n"
           xmlStr +=  "</testsuites>\n"
-          writeFile file: ${ATFFILE_RESULT}, text: xmlStr
+          writeFile file: ${ATF_FILE_RESULT}, text: xmlStr
+
           atf_result_json = null;
           atf_result_response = null;
 
