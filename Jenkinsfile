@@ -180,11 +180,11 @@ pipeline {
 
           echo "Saving Results into ${ATF_FILE_RESULT}"
           def xmlStr='<?xml version="1.0" encoding="UTF-8"?>\n'
-          xmlStr += "<testsuites errors=\"${atf_failure_count}\" "
-          xmlStr += "name=\"${atf_result_json.result.test_suite_name}\" "
-          xmlStr += "tests=\"${atf_success_count}\" "
-          xmlStr += "time=\"${atf_result_json.result.test_suite_duration}\" >\n"
-          xmlStr +=  "</testsuites>\n"
+          xmlStr += """<testsuites errors="${atf_failure_count}"
+  name="${atf_result_json.result.test_suite_name}"
+  tests="${atf_success_count}"
+  time="${atf_result_json.result.test_suite_duration}" >
+</testsuites>\n"""
           writeFile file: ${ATF_FILE_RESULT}, text: xmlStr
 
           atf_result_json = null;
