@@ -176,7 +176,7 @@ pipeline {
           currentBuild.description += "Test Suite total success count is : ${atf_result_json.result.rolledup_test_success_count} <br>"
 
           echo "Creating ATF result folder ${ATF_FOLDER}"
-          fileOperations([folderCreateOperation(${ATF_FOLDER})])
+          fileOperations([folderCreateOperation("${ATF_FOLDER}")])
 
           echo "Saving Results into ${ATF_FILE_RESULT}"
           def xmlStr='<?xml version="1.0" encoding="UTF-8"?>\n'
