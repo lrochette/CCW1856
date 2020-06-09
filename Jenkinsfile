@@ -4,7 +4,7 @@ pipeline {
   agent any
   environment {
     TEST_INSTANCE    = 'https://lrtest1.service-now.com'
-    PROD_INSTANCE    = 'https://lrochette1.service-now.com'
+    PROD_INSTANCE    = 'https://lruat1.service-now.com'
     APP_SYS_ID       = 'b5a05473908010107f4468f7a3a96f5c'
     ATF_SUITE_NAME   = 'CCW1856%20Suite'
     ATF_FOLDER       = "ATF-results"
@@ -191,7 +191,6 @@ pipeline {
   </testcase>
 </testsuite>\n"""
           writeFile file: ATF_FILE_RESULT, text: xmlStr
-          echo "XML Results: $xmlStr"
           atf_result_json = null;
           atf_result_response = null;
 
@@ -221,7 +220,7 @@ pipeline {
 
           if(app_publish_progress == null || app_publish_progress == ""){
               currentBuild.description += "Stopping the build - Unable to track publish app progress \n\n"
-              error ('Stopping the build publish app prgress is not found')
+              error ('Stopping the build publish app progress is not found')
               return
           }
 
@@ -278,9 +277,71 @@ pipeline {
       steps {
         snDevOpsStep()
         snDevOpsPackage(name: "CCW1856 Scoped App", artifactsPayload: """{"artifacts": [{"name": "CCW1856.xml", "version": "1.0.$BUILD_NUMBER","repositoryName": "CCW"}]}""")
-        snDevOpsChange()
-        sh 'sleep 15'
-        sh 'echo Installing to Prod'
+        // snDevOpsChange()
+
+        script {
+          def app_install_response = httpRequest authentication: "SN-lruat1", acceptType: 'APPLICATION_JSON', contentType: 'APPLICATION_JSON', httpMode: 'POST', url: "${PROD_INSTANCE}/api/sn_cicd/app_repo/install?sys_id=${APP_SYS_ID}"
+          def app_install_json = (new JsonSlurper().parseText(app_install_response.content))
+
+          String app_install_status = "${app_install_json.result.status}";
+          echo "${app_install_json}"
+          String app_install_progress = "${app_install_json.result.links.progress.id}";
+
+          if(app_install_progress == null || app_install_progress == ""){
+             error ('Stopping the build install app prgress is not found')
+             return
+          }
+
+          String app_install_progress_status = "${app_install_json.result.status}";
+
+          if(app_install_progress_status == "3"){
+             currentBuild.description += "Stopping the build install app is not succesful on ${PROD_INSTANCE} - unable to track progress<br><br>"
+             error ('Stopping the build APP Install failed')
+             return
+          }
+          app_install_json = null;
+          app_install_response = null;
+
+          while (app_install_progress_status != "2" && app_install_progress_status != "3" && app_install_progress_status != "4"){
+             def app_install_progress_response = httpRequest authentication: "SN-lruat1", acceptType: 'APPLICATION_JSON', contentType: 'APPLICATION_JSON', httpMode: 'GET', url: "${PROD_INSTANCE}/api/sn_cicd/progress/"+app_install_progress
+
+             def app_install_progress_json = (new JsonSlurper().parseText(app_install_progress_response.content))
+             echo "${app_install_progress_json}"
+             app_install_progress_status = "${app_install_progress_json.result.status}";
+             println("Install App progress status is ${app_install_progress_status}");
+
+             app_install_progress_json = null;
+             app_install_progress_response = null;
+             sleep 3 // sleep for 5 seconds
+          }
+
+          // get the final app install progress details
+          def app_install_progress_response = httpRequest authentication: "SN-lruat1", acceptType: 'APPLICATION_JSON', contentType: 'APPLICATION_JSON', httpMode: 'GET', url: "${PROD_INSTANCE}/api/sn_cicd/progress/"+app_install_progress
+          def app_install_progress_json = (new JsonSlurper().parseText(app_install_progress_response.content))
+
+          app_install_progress_status = "${app_install_progress_json.result.status}";
+          String app_install_progress_status_label = "${app_install_progress_json.result.status_label}";
+          String app_install_progress_status_message = "${app_install_progress_json.result.status_message}";
+          String app_install_progress_status_detail = "${app_install_progress_json.result.status_detail}";
+          String app_install_progress_precent_complete = "${app_install_progress_json.result.percent_complete}";
+          println("App install Progress status is ${app_install_progress_status}")
+          println("App install Progress status label is ${app_install_progress_status_label}")
+          println("App install Progress status message is ${app_install_progress_status_message}")
+          println("App install Progress status detail is ${app_install_progress_status_detail}")
+          println("App install Progress percent complete is ${app_install_progress_precent_complete}")
+
+          if(app_install_progress_status != "2"){
+             currentBuild.description += "Stopping the build install app is not succesful on ${PROD_INSTANCE} because of ${app_install_progress_status_message} <br><br>"
+
+              error ('Stopping the build install app is not succesful')
+             return
+          }
+
+          app_install_progress_json = null
+          app_install_progress_response = null
+
+          currentBuild.description += "App successfully installed on the client instance ${PROD_INSTANCE} <br><br>"
+        }
       }
 
     }       // stage prod
