@@ -278,7 +278,7 @@ pipeline {
       steps {
         snDevOpsStep()
         snDevOpsPackage(name: "CCW1856 Scoped App", artifactsPayload: """{"artifacts": [{"name": "CCW1856.xml", "version": "$VERSION","repositoryName": "CCW"}]}""")
-        // snDevOpsChange()
+        snDevOpsChange()
 
         script {
           def app_install_response = httpRequest authentication: "SN-lruat1", acceptType: 'APPLICATION_JSON', contentType: 'APPLICATION_JSON', httpMode: 'POST', url: "${PROD_INSTANCE}/api/sn_cicd/app_repo/install?sys_id=${APP_SYS_ID}&version=${VERSION}"
