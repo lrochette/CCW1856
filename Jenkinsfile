@@ -180,6 +180,13 @@ pipeline {
           echo "Creating ATF result folder ${ATF_FOLDER}"
           fileOperations([folderCreateOperation(${ATF_FOLDER})])
 
+          def xmlStr='<?xml version="1.0" encoding="UTF-8"?>\n'
+          xmlStr += "<testsuites errors=\"${atf_failure_count}\" "
+          xmlStr += "name=\"${atf_result_json.result.test_suite_name}\" "
+          xmlStr += "tests=\"${atf_success_count}\" "
+          xmlStr += "time=\"{atf_result_json.result.test_suite_duration}\" >\n"
+          xmlStr +=  "</testsuites>\n"
+          writeFile file: ${ATFFILE_RESULT}, text: xmlStr
           atf_result_json = null;
           atf_result_response = null;
 
