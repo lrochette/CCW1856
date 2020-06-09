@@ -9,6 +9,7 @@ pipeline {
     ATF_SUITE_NAME   = 'CCW1856%20Suite'
     ATF_FOLDER       = "ATF-results"
     ATF_FILE_RESULT  = "${ATF_FOLDER}/results.xml"
+    VERSION          = "1.0.$BUILD_NUMBER"
   }
 
   stages {
@@ -77,7 +78,7 @@ pipeline {
           app_progress_json = null
           app_progress_response = null
           currentBuild.description += "Applied new commit changes successfully on the instance ${TEST_INSTANCE} \n\n"
-          snDevOpsArtifact(artifactsPayload: """{"artifacts": [{"name": "CCW1856.xml", "version": "1.0.$BUILD_NUMBER","semanticVersion": "1.0.$BUILD_NUMBER","repositoryName": "CCW"}]}""")
+          snDevOpsArtifact(artifactsPayload: """{"artifacts": [{"name": "CCW1856.xml", "version": "$VERSION","semanticVersion": "$VERSION","repositoryName": "CCW"}]}""")
         }
       }
     }
@@ -212,7 +213,7 @@ pipeline {
           // publish the app to the repo
           currentBuild.description += "\npublishing the app to the App-Store \n"
 
-          def app_publish_response = httpRequest authentication: "SN-lrtest1", acceptType: 'APPLICATION_JSON', contentType: 'APPLICATION_JSON', httpMode: 'POST', url: "${TEST_INSTANCE}/api/sn_cicd/app_repo/publish?sys_id=${APP_SYS_ID}"
+          def app_publish_response = httpRequest authentication: "SN-lrtest1", acceptType: 'APPLICATION_JSON', contentType: 'APPLICATION_JSON', httpMode: 'POST', url: "${TEST_INSTANCE}/api/sn_cicd/app_repo/publish?sys_id=${APP_SYS_ID}&version=${VERSION}"
           def app_publish_json = (new JsonSlurper().parseText(app_publish_response.content))
           String app_publish_status = "${app_publish_json.result.status}";
           echo "${app_publish_json}"
@@ -276,11 +277,11 @@ pipeline {
     stage('prod') {
       steps {
         snDevOpsStep()
-        snDevOpsPackage(name: "CCW1856 Scoped App", artifactsPayload: """{"artifacts": [{"name": "CCW1856.xml", "version": "1.0.$BUILD_NUMBER","repositoryName": "CCW"}]}""")
+        snDevOpsPackage(name: "CCW1856 Scoped App", artifactsPayload: """{"artifacts": [{"name": "CCW1856.xml", "version": "$VERSION","repositoryName": "CCW"}]}""")
         // snDevOpsChange()
 
         script {
-          def app_install_response = httpRequest authentication: "SN-lruat1", acceptType: 'APPLICATION_JSON', contentType: 'APPLICATION_JSON', httpMode: 'POST', url: "${PROD_INSTANCE}/api/sn_cicd/app_repo/install?sys_id=${APP_SYS_ID}"
+          def app_install_response = httpRequest authentication: "SN-lruat1", acceptType: 'APPLICATION_JSON', contentType: 'APPLICATION_JSON', httpMode: 'POST', url: "${PROD_INSTANCE}/api/sn_cicd/app_repo/install?sys_id=${APP_SYS_ID}&&version=${VERSION}"
           def app_install_json = (new JsonSlurper().parseText(app_install_response.content))
 
           String app_install_status = "${app_install_json.result.status}";
