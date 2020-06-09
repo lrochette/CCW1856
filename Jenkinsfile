@@ -160,9 +160,11 @@ pipeline {
           def atf_result_json = (new JsonSlurper().parseText(atf_result_response.content))
 
           String atf_result_status = "${atf_result_json.result.test_suite_status}";
-          String atf_success_count = "${atf_result_json.result.rolledup_test_success_count}";
-          String atf_failure_count = "${atf_result_json.result.rolledup_test_failure_count}";
-          String atf_duration = "${atf_result_json.result.test_suite_duration}";
+          def atf_success_count = "${atf_result_json.result.rolledup_test_success_count}";
+          def atf_failure_count = "${atf_result_json.result.rolledup_test_failure_count}";
+          def atf_total_count = atf_success_count + atf_failure_count;
+          def strArray="${atf_result_json.result.test_suite_duration}".split(" ");
+          String atf_duration = strArray[0];
 
           if (atf_result_status != "success" && atf_result_status != "success_with_warnings") {
               currentBuild.description += "Stopping the build - ATF suite run is not successful \n\n"
@@ -173,7 +175,7 @@ pipeline {
           // Save result as JUnit
           currentBuild.description += "ATF Tests ran successfully \n\n Test Suite Name : ${atf_result_json.result.test_suite_name} \n"
           currentBuild.description += "Test Suite result URL : ${atf_result_json.result.links.results.url} \n"
-          currentBuild.description += "Test Suite total run duration is : ${atf_result_json.result.test_suite_duration}) \n"
+          currentBuild.description += "Test Suite total run duration is : ${atf_result_json.result.test_suite_duration} \n"
           currentBuild.description += "Test Suite total success count is : ${atf_result_json.result.rolledup_test_success_count} \n"
 
           echo "Creating ATF result folder ${ATF_FOLDER}"
@@ -181,11 +183,11 @@ pipeline {
 
           echo "Saving Results into ${ATF_FILE_RESULT}"
           def xmlStr='<?xml version="1.0" encoding="UTF-8"?>\n'
-          xmlStr += """<testsuites errors="${atf_failure_count}"
-  name="${atf_result_json.result.test_suite_name}"
-  tests="${atf_success_count}"
+          xmlStr += """<testsuite name="${atf_result_json.result.test_suite_name}"
+  failures="${atf_failure_count}"
+  tests="${atf_total_count}"
   time="${atf_result_json.result.test_suite_duration}" >
-</testsuites>\n"""
+</testsuite>\n"""
           writeFile file: ATF_FILE_RESULT, text: xmlStr
           echo "XML Results: $xmlStr"
           atf_result_json = null;
