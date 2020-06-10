@@ -188,7 +188,7 @@ pipeline {
   failures="${atf_failure_count}"
   tests="${atf_total_count}"
   time="${atf_duration}" >
-  <testcase name="case1" classname="class.foo" status="passed" time="4">
+  <testcase name=""${atf_result_json.result.test_suite_name}" classname=""${atf_result_json.result.test_suite_name}" status="${atf_result_status}" time="${atf_duration}">
   </testcase>
 </testsuite>\n"""
           writeFile file: ATF_FILE_RESULT, text: xmlStr
