@@ -165,22 +165,25 @@ pipeline {
           def atf_success_count = "${atf_result_json.result.rolledup_test_success_count}";
           def atf_failure_count = "${atf_result_json.result.rolledup_test_failure_count}";
           def atf_total_count = atf_success_count + atf_failure_count;
+          def atf_suite_name = "${atf_result_json.result.test_suite_name}"
+          def atf_suite_url = "${atf_result_json.result.links.results.url}"
           def strArray="${atf_result_json.result.test_suite_duration}".split();
           String atf_duration = strArray[0];
 
+          // it seems you need to reset those between 2 calls
           atf_result_json = null;
           atf_result_response = null;
-          
+
           println("Getting detailled individuals test results")
-          def tc_response = httpRequest url: "${TEST_INSTANCE}/api/now/table/sys_atf_test_resultfoooo?parent="+progress_result
-/*
-          def detailled_results_json = (new JsonSlurper().parseText(detailled_results_response.content))
-          println("TC Results: ${detailled_results_response.content}")
+          def tc_response = httpRequest url: "${TEST_INSTANCE}/api/now/table/sys_atf_test_resultparent="+progress_result
+
+          def detailled_results_json = (new JsonSlurper().parseText(tc_response.content))
+          println("TC Results: ${tc_response.content}")
           echo "Creating ATF result folder ${ATF_FOLDER}"
           fileOperations([folderCreateOperation("${ATF_FOLDER}")])
           echo "Saving Results into ${ATF_FILE_RESULT}"
-          def xmlStr='<?xml version="1.0" encoding="UTF-8"?>\n'
-          xmlStr += """<testsuite name="${atf_result_json.result.test_suite_name}"
+    /*      def xmlStr='<?xml version="1.0" encoding="UTF-8"?>\n'
+          xmlStr += """<testsuite name="${atf_suite_name}"
     failures="${atf_failure_count} tests="${atf_total_count} time="${atf_duration}" >\n"""
 
           // loop on each test case
@@ -208,15 +211,11 @@ pipeline {
           }
 
           // Save result as JUnit
-          currentBuild.description += "ATF Tests ran successfully \n\n Test Suite Name : ${atf_result_json.result.test_suite_name} \n"
-          currentBuild.description += "Test Suite result URL : ${atf_result_json.result.links.results.url} \n"
+          currentBuild.description += "ATF Tests ran successfully \n\n Test Suite Name : ${atf_suite_name} \n"
+          currentBuild.description += "Test Suite result URL : ${atf_suite_url} \n"
           currentBuild.description += "Test Suite total run duration is : $atf_duration\n"
-          currentBuild.description += "Test Suite total success count is : ${atf_result_json.result.rolledup_test_success_count} \n"
+          currentBuild.description += "Test Suite total success count is : ${atf_success_count} \n"
 
-
-
-          atf_result_json = null;
-          atf_result_response = null;
 */
         }   // script in test
 
