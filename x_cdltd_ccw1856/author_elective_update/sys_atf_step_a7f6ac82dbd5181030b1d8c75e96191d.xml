@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_step">
+    <sys_atf_step action="DELETE">
+        <active>true</active>
+        <copied_from display_value="Open an Existing Record">2ebd1b06d50110107f442a7f35ef2d10</copied_from>
+        <description>Open the 'CICD Team Setup' form with id '{{Step 1: Record Query.First record}}'</description>
+        <display_name>Open an Existing Record</display_name>
+        <inputs/>
+        <inputs/>
+        <mugshots_cache_json/>
+        <notes/>
+        <order>2</order>
+        <snapshot/>
+        <step_config display_value="Open an Existing Record">5f2e0e535332120028bc29cac2dc34d3</step_config>
+        <sys_class_name>sys_atf_step</sys_class_name>
+        <sys_created_by>laurent.rochette@snc</sys_created_by>
+        <sys_created_on>2020-06-10 18:26:19</sys_created_on>
+        <sys_id>a7f6ac82dbd5181030b1d8c75e96191d</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Open an Existing Record</sys_name>
+        <sys_package display_value="CCW1856" source="x_cdltd_ccw1856">b5a05473908010107f4468f7a3a96f5c</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="CCW1856">b5a05473908010107f4468f7a3a96f5c</sys_scope>
+        <sys_update_name>sys_atf_step_a7f6ac82dbd5181030b1d8c75e96191d</sys_update_name>
+        <sys_updated_by>laurent.rochette@snc</sys_updated_by>
+        <sys_updated_on>2020-06-10 18:30:41</sys_updated_on>
+        <table>x_cdltd_ccw1856_cicd_team_setup</table>
+        <test display_value="CCW1956 Tests">0ff62c82dbd5181030b1d8c75e9619cc</test>
+        <timeout/>
+        <warning_message/>
+    </sys_atf_step>
+    <sys_variable_value action="DELETE" query="document_key=a7f6ac82dbd5181030b1d8c75e96191d"/>
+    <sys_variable_value action="DELETE">
+        <document>sys_atf_step</document>
+        <document_key>a7f6ac82dbd5181030b1d8c75e96191d</document_key>
+        <order>200</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>laurent.rochette@snc</sys_created_by>
+        <sys_created_on>2020-06-10 18:26:19</sys_created_on>
+        <sys_id>33f6ac82dbd5181030b1d8c75e961920</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>laurent.rochette@snc</sys_updated_by>
+        <sys_updated_on>2020-06-10 18:26:19</sys_updated_on>
+        <value/>
+        <variable display_value="">ad351a4e53a0220002c6435723dc34f0</variable>
+    </sys_variable_value>
+    <sys_variable_value action="DELETE">
+        <document>sys_atf_step</document>
+        <document_key>a7f6ac82dbd5181030b1d8c75e96191d</document_key>
+        <order>50</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>laurent.rochette@snc</sys_created_by>
+        <sys_created_on>2020-06-10 18:26:19</sys_created_on>
+        <sys_id>7ff6ac82dbd5181030b1d8c75e96191f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>laurent.rochette@snc</sys_updated_by>
+        <sys_updated_on>2020-06-10 18:26:19</sys_updated_on>
+        <value>standard_ui</value>
+        <variable display_value="">17d732a9c7a333005e5c45b881c26007</variable>
+    </sys_variable_value>
+    <sys_variable_value action="DELETE">
+        <document>sys_atf_step</document>
+        <document_key>a7f6ac82dbd5181030b1d8c75e96191d</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>laurent.rochette@snc</sys_created_by>
+        <sys_created_on>2020-06-10 18:26:19</sys_created_on>
+        <sys_id>b7f6ac82dbd5181030b1d8c75e961920</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>laurent.rochette@snc</sys_updated_by>
+        <sys_updated_on>2020-06-10 18:26:19</sys_updated_on>
+        <value>x_cdltd_ccw1856_cicd_team_setup</value>
+        <variable display_value="">b124164e53a0220002c6435723dc34c5</variable>
+    </sys_variable_value>
+    <sys_variable_value action="DELETE">
+        <document>sys_atf_step</document>
+        <document_key>a7f6ac82dbd5181030b1d8c75e96191d</document_key>
+        <order>300</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>laurent.rochette@snc</sys_created_by>
+        <sys_created_on>2020-06-10 18:26:19</sys_created_on>
+        <sys_id>f3f6ac82dbd5181030b1d8c75e961920</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>laurent.rochette@snc</sys_updated_by>
+        <sys_updated_on>2020-06-10 18:26:19</sys_updated_on>
+        <value/>
+        <variable display_value="">6e55da4e53a0220002c6435723dc34a0</variable>
+    </sys_variable_value>
+    <sys_element_mapping action="DELETE" query="id=a7f6ac82dbd5181030b1d8c75e96191d"/>
+    <sys_element_mapping action="DELETE">
+        <field>record_id</field>
+        <id>a7f6ac82dbd5181030b1d8c75e96191d</id>
+        <sys_created_by>laurent.rochette@snc</sys_created_by>
+        <sys_created_on>2020-06-10 18:26:19</sys_created_on>
+        <sys_id>3ff6ac82dbd5181030b1d8c75e961920</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_updated_by>laurent.rochette@snc</sys_updated_by>
+        <sys_updated_on>2020-06-10 18:26:20</sys_updated_on>
+        <table>var__m_atf_input_variable_5f2e0e535332120028bc29cac2dc34d3</table>
+        <value>{{step['97f6ac82dbd5181030b1d8c75e961915'].first_record}}</value>
+    </sys_element_mapping>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="CCW1856">b5a05473908010107f4468f7a3a96f5c</application>
+        <file_path/>
+        <instance_id>5c4c0eb3db3c5854f37acac505961967</instance_id>
+        <instance_name>lrdev1</instance_name>
+        <name>sys_atf_step_a7f6ac82dbd5181030b1d8c75e96191d</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_step"><sys_atf_step action="INSERT_OR_UPDATE"><active>true</active><copied_from display_value="Open an Existing Record">2ebd1b06d50110107f442a7f35ef2d10</copied_from><description>Open the 'CICD Team Setup' form with id '{{Step 1: Record Query.First record}}'</description><display_name>Open an Existing Record</display_name><inputs/><inputs/><mugshots_cache_json/><notes/><order>2</order><snapshot/><step_config display_value="Open an Existing Record">5f2e0e535332120028bc29cac2dc34d3</step_config><sys_class_name>sys_atf_step</sys_class_name><sys_created_by>laurent.rochette@snc</sys_created_by><sys_created_on>2020-06-10 18:26:19</sys_created_on><sys_id>a7f6ac82dbd5181030b1d8c75e96191d</sys_id><sys_mod_count>2</sys_mod_count><sys_name>Open an Existing Record</sys_name><sys_package display_value="CCW1856" source="x_cdltd_ccw1856">b5a05473908010107f4468f7a3a96f5c</sys_package><sys_policy/><sys_scope display_value="CCW1856">b5a05473908010107f4468f7a3a96f5c</sys_scope><sys_update_name>sys_atf_step_a7f6ac82dbd5181030b1d8c75e96191d</sys_update_name><sys_updated_by>laurent.rochette@snc</sys_updated_by><sys_updated_on>2020-06-10 18:30:41</sys_updated_on><table>x_cdltd_ccw1856_cicd_team_setup</table><test display_value="CCW1956 Tests">0ff62c82dbd5181030b1d8c75e9619cc</test><timeout/><warning_message/></sys_atf_step><sys_variable_value action="delete_multiple" query="document_key=a7f6ac82dbd5181030b1d8c75e96191d"/><sys_variable_value action="INSERT_OR_UPDATE"><document>sys_atf_step</document><document_key>a7f6ac82dbd5181030b1d8c75e96191d</document_key><order>200</order><sys_class_name>sys_variable_value</sys_class_name><sys_created_by>laurent.rochette@snc</sys_created_by><sys_created_on>2020-06-10 18:26:19</sys_created_on><sys_id>33f6ac82dbd5181030b1d8c75e961920</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>laurent.rochette@snc</sys_updated_by><sys_updated_on>2020-06-10 18:26:19</sys_updated_on><value/><variable display_value="">ad351a4e53a0220002c6435723dc34f0</variable></sys_variable_value><sys_variable_value action="INSERT_OR_UPDATE"><document>sys_atf_step</document><document_key>a7f6ac82dbd5181030b1d8c75e96191d</document_key><order>50</order><sys_class_name>sys_variable_value</sys_class_name><sys_created_by>laurent.rochette@snc</sys_created_by><sys_created_on>2020-06-10 18:26:19</sys_created_on><sys_id>7ff6ac82dbd5181030b1d8c75e96191f</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>laurent.rochette@snc</sys_updated_by><sys_updated_on>2020-06-10 18:26:19</sys_updated_on><value>standard_ui</value><variable display_value="">17d732a9c7a333005e5c45b881c26007</variable></sys_variable_value><sys_variable_value action="INSERT_OR_UPDATE"><document>sys_atf_step</document><document_key>a7f6ac82dbd5181030b1d8c75e96191d</document_key><order>100</order><sys_class_name>sys_variable_value</sys_class_name><sys_created_by>laurent.rochette@snc</sys_created_by><sys_created_on>2020-06-10 18:26:19</sys_created_on><sys_id>b7f6ac82dbd5181030b1d8c75e961920</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>laurent.rochette@snc</sys_updated_by><sys_updated_on>2020-06-10 18:26:19</sys_updated_on><value>x_cdltd_ccw1856_cicd_team_setup</value><variable display_value="">b124164e53a0220002c6435723dc34c5</variable></sys_variable_value><sys_variable_value action="INSERT_OR_UPDATE"><document>sys_atf_step</document><document_key>a7f6ac82dbd5181030b1d8c75e96191d</document_key><order>300</order><sys_class_name>sys_variable_value</sys_class_name><sys_created_by>laurent.rochette@snc</sys_created_by><sys_created_on>2020-06-10 18:26:19</sys_created_on><sys_id>f3f6ac82dbd5181030b1d8c75e961920</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>laurent.rochette@snc</sys_updated_by><sys_updated_on>2020-06-10 18:26:19</sys_updated_on><value/><variable display_value="">6e55da4e53a0220002c6435723dc34a0</variable></sys_variable_value><sys_element_mapping action="delete_multiple" query="id=a7f6ac82dbd5181030b1d8c75e96191d"/><sys_element_mapping action="INSERT_OR_UPDATE"><field>record_id</field><id>a7f6ac82dbd5181030b1d8c75e96191d</id><sys_created_by>laurent.rochette@snc</sys_created_by><sys_created_on>2020-06-10 18:26:19</sys_created_on><sys_id>3ff6ac82dbd5181030b1d8c75e961920</sys_id><sys_mod_count>1</sys_mod_count><sys_updated_by>laurent.rochette@snc</sys_updated_by><sys_updated_on>2020-06-10 18:26:20</sys_updated_on><table>var__m_atf_input_variable_5f2e0e535332120028bc29cac2dc34d3</table><value>{{step['97f6ac82dbd5181030b1d8c75e961915'].first_record}}</value></sys_element_mapping></record_update>]]></payload>
+        <payload_hash>-1630096961</payload_hash>
+        <record_name>Open an Existing Record</record_name>
+        <reverted_from/>
+        <source>faa6a882dbd5181030b1d8c75e96198a</source>
+        <source_table>sys_update_set</source_table>
+        <state>current</state>
+        <sys_created_by>laurent.rochette@snc</sys_created_by>
+        <sys_created_on>2020-06-10 18:30:41</sys_created_on>
+        <sys_id>aff768c2dbd5181030b1d8c75e9619b6</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1729f7fa2c50000001</sys_recorded_at>
+        <sys_updated_by>laurent.rochette@snc</sys_updated_by>
+        <sys_updated_on>2020-06-10 18:30:41</sys_updated_on>
+        <type>Test Step</type>
+        <update_guid>a7f768c2efd518100bfb5f8c7e9d04b6</update_guid>
+        <update_guid_history>a7f768c2efd518100bfb5f8c7e9d04b6:-1630096961,37f6ac82c7d51810e6003000d1b33935:1831407185,73f6ac82e0d51810aed7fc8ec129512f:1514626237</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>laurent.rochette@snc</sys_created_by>
+        <sys_created_on>2020-06-10 18:30:41</sys_created_on>
+        <sys_db_object display_value="" name="sys_atf_step">sys_atf_step</sys_db_object>
+        <sys_id>4d996608100942a9b74fdf46aac37e21</sys_id>
+        <sys_metadata>a7f6ac82dbd5181030b1d8c75e96191d</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Open an Existing Record</sys_name>
+        <sys_package display_value="CCW1856" source="x_cdltd_ccw1856">b5a05473908010107f4468f7a3a96f5c</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="CCW1856">b5a05473908010107f4468f7a3a96f5c</sys_scope>
+        <sys_scope_delete display_value="">c342593af4a2410681f0669efc1611a4</sys_scope_delete>
+        <sys_update_name>sys_atf_step_a7f6ac82dbd5181030b1d8c75e96191d</sys_update_name>
+        <sys_update_version display_value="sys_atf_step_a7f6ac82dbd5181030b1d8c75e96191d">aff768c2dbd5181030b1d8c75e9619b6</sys_update_version>
+        <sys_updated_by>laurent.rochette@snc</sys_updated_by>
+        <sys_updated_on>2020-06-10 18:30:41</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

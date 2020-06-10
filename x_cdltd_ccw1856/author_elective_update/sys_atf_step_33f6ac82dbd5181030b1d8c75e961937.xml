@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_step">
+    <sys_atf_step action="DELETE">
+        <active>true</active>
+        <copied_from display_value="Field Values Validation">76bd1b06d50110107f442a7f35ef2d2a</copied_from>
+        <description>Validate that the form matches the following condition:
+Environment Setup is not empty
+and Name is not empty
+With a failure timeout of 5 Seconds</description>
+        <display_name>Field Values Validation</display_name>
+        <inputs/>
+        <mugshots_cache_json/>
+        <notes/>
+        <order>3</order>
+        <snapshot/>
+        <step_config display_value="Field Values Validation">1b97cd31872022008182c9ded0e3ece5</step_config>
+        <sys_class_name>sys_atf_step</sys_class_name>
+        <sys_created_by>laurent.rochette@snc</sys_created_by>
+        <sys_created_on>2020-06-10 18:26:20</sys_created_on>
+        <sys_id>33f6ac82dbd5181030b1d8c75e961937</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Field Values Validation</sys_name>
+        <sys_package display_value="CCW1856" source="x_cdltd_ccw1856">b5a05473908010107f4468f7a3a96f5c</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="CCW1856">b5a05473908010107f4468f7a3a96f5c</sys_scope>
+        <sys_update_name>sys_atf_step_33f6ac82dbd5181030b1d8c75e961937</sys_update_name>
+        <sys_updated_by>laurent.rochette@snc</sys_updated_by>
+        <sys_updated_on>2020-06-10 18:26:20</sys_updated_on>
+        <table>x_cdltd_ccw1856_cicd_team_setup</table>
+        <test display_value="CCW1956 Pipeline copy">0ff62c82dbd5181030b1d8c75e9619cc</test>
+        <timeout>1970-01-01 00:00:05</timeout>
+        <warning_message/>
+    </sys_atf_step>
+    <sys_variable_value action="DELETE" query="document_key=33f6ac82dbd5181030b1d8c75e961937"/>
+    <sys_variable_value action="DELETE">
+        <document>sys_atf_step</document>
+        <document_key>33f6ac82dbd5181030b1d8c75e961937</document_key>
+        <order>200</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>laurent.rochette@snc</sys_created_by>
+        <sys_created_on>2020-06-10 18:26:20</sys_created_on>
+        <sys_id>37f6ac82dbd5181030b1d8c75e961938</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>laurent.rochette@snc</sys_updated_by>
+        <sys_updated_on>2020-06-10 18:26:20</sys_updated_on>
+        <value>environment_setupISNOTEMPTY^nameISNOTEMPTY^EQ</value>
+        <variable display_value="">4aa838f25320220002c6435723dc34e1</variable>
+    </sys_variable_value>
+    <sys_variable_value action="DELETE">
+        <document>sys_atf_step</document>
+        <document_key>33f6ac82dbd5181030b1d8c75e961937</document_key>
+        <order>50</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>laurent.rochette@snc</sys_created_by>
+        <sys_created_on>2020-06-10 18:26:20</sys_created_on>
+        <sys_id>73f6ac82dbd5181030b1d8c75e961938</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>laurent.rochette@snc</sys_updated_by>
+        <sys_updated_on>2020-06-10 18:26:20</sys_updated_on>
+        <value>standard_ui</value>
+        <variable display_value="">c83b5337e7633300e12127d8d2f6a98b</variable>
+    </sys_variable_value>
+    <sys_variable_value action="DELETE">
+        <document>sys_atf_step</document>
+        <document_key>33f6ac82dbd5181030b1d8c75e961937</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>laurent.rochette@snc</sys_created_by>
+        <sys_created_on>2020-06-10 18:26:20</sys_created_on>
+        <sys_id>f7f6ac82dbd5181030b1d8c75e961938</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>laurent.rochette@snc</sys_updated_by>
+        <sys_updated_on>2020-06-10 18:26:20</sys_updated_on>
+        <value>x_cdltd_ccw1856_cicd_team_setup</value>
+        <variable display_value="">a0e13cc35320220002c6435723dc3467</variable>
+    </sys_variable_value>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="CCW1856">b5a05473908010107f4468f7a3a96f5c</application>
+        <file_path/>
+        <instance_id>5c4c0eb3db3c5854f37acac505961967</instance_id>
+        <instance_name>lrdev1</instance_name>
+        <name>sys_atf_step_33f6ac82dbd5181030b1d8c75e961937</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_step"><sys_atf_step action="INSERT_OR_UPDATE"><active>true</active><copied_from display_value="Field Values Validation">76bd1b06d50110107f442a7f35ef2d2a</copied_from><description>Validate that the form matches the following condition:
+Environment Setup is not empty
+and Name is not empty
+With a failure timeout of 5 Seconds</description><display_name>Field Values Validation</display_name><inputs/><mugshots_cache_json/><notes/><order>3</order><snapshot/><step_config display_value="Field Values Validation">1b97cd31872022008182c9ded0e3ece5</step_config><sys_class_name>sys_atf_step</sys_class_name><sys_created_by>laurent.rochette@snc</sys_created_by><sys_created_on>2020-06-10 18:26:20</sys_created_on><sys_id>33f6ac82dbd5181030b1d8c75e961937</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Field Values Validation</sys_name><sys_package display_value="CCW1856" source="x_cdltd_ccw1856">b5a05473908010107f4468f7a3a96f5c</sys_package><sys_policy/><sys_scope display_value="CCW1856">b5a05473908010107f4468f7a3a96f5c</sys_scope><sys_update_name>sys_atf_step_33f6ac82dbd5181030b1d8c75e961937</sys_update_name><sys_updated_by>laurent.rochette@snc</sys_updated_by><sys_updated_on>2020-06-10 18:26:20</sys_updated_on><table>x_cdltd_ccw1856_cicd_team_setup</table><test display_value="CCW1956 Pipeline copy">0ff62c82dbd5181030b1d8c75e9619cc</test><timeout>1970-01-01 00:00:05</timeout><warning_message/></sys_atf_step><sys_variable_value action="delete_multiple" query="document_key=33f6ac82dbd5181030b1d8c75e961937"/><sys_variable_value action="INSERT_OR_UPDATE"><document>sys_atf_step</document><document_key>33f6ac82dbd5181030b1d8c75e961937</document_key><order>200</order><sys_class_name>sys_variable_value</sys_class_name><sys_created_by>laurent.rochette@snc</sys_created_by><sys_created_on>2020-06-10 18:26:20</sys_created_on><sys_id>37f6ac82dbd5181030b1d8c75e961938</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>laurent.rochette@snc</sys_updated_by><sys_updated_on>2020-06-10 18:26:20</sys_updated_on><value>environment_setupISNOTEMPTY^nameISNOTEMPTY^EQ</value><variable display_value="">4aa838f25320220002c6435723dc34e1</variable></sys_variable_value><sys_variable_value action="INSERT_OR_UPDATE"><document>sys_atf_step</document><document_key>33f6ac82dbd5181030b1d8c75e961937</document_key><order>50</order><sys_class_name>sys_variable_value</sys_class_name><sys_created_by>laurent.rochette@snc</sys_created_by><sys_created_on>2020-06-10 18:26:20</sys_created_on><sys_id>73f6ac82dbd5181030b1d8c75e961938</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>laurent.rochette@snc</sys_updated_by><sys_updated_on>2020-06-10 18:26:20</sys_updated_on><value>standard_ui</value><variable display_value="">c83b5337e7633300e12127d8d2f6a98b</variable></sys_variable_value><sys_variable_value action="INSERT_OR_UPDATE"><document>sys_atf_step</document><document_key>33f6ac82dbd5181030b1d8c75e961937</document_key><order>100</order><sys_class_name>sys_variable_value</sys_class_name><sys_created_by>laurent.rochette@snc</sys_created_by><sys_created_on>2020-06-10 18:26:20</sys_created_on><sys_id>f7f6ac82dbd5181030b1d8c75e961938</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>laurent.rochette@snc</sys_updated_by><sys_updated_on>2020-06-10 18:26:20</sys_updated_on><value>x_cdltd_ccw1856_cicd_team_setup</value><variable display_value="">a0e13cc35320220002c6435723dc3467</variable></sys_variable_value></record_update>]]></payload>
+        <payload_hash>-927284193</payload_hash>
+        <record_name>Field Values Validation</record_name>
+        <reverted_from/>
+        <source>faa6a882dbd5181030b1d8c75e96198a</source>
+        <source_table>sys_update_set</source_table>
+        <state>current</state>
+        <sys_created_by>laurent.rochette@snc</sys_created_by>
+        <sys_created_on>2020-06-10 18:26:20</sys_created_on>
+        <sys_id>3bf6ac82dbd5181030b1d8c75e96193a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1729f7ba6fd0000001</sys_recorded_at>
+        <sys_updated_by>laurent.rochette@snc</sys_updated_by>
+        <sys_updated_on>2020-06-10 18:26:20</sys_updated_on>
+        <type>Test Step</type>
+        <update_guid>73f6ac827fd51810b0781bb61370b13a</update_guid>
+        <update_guid_history>73f6ac827fd51810b0781bb61370b13a:-927284193</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>laurent.rochette@snc</sys_created_by>
+        <sys_created_on>2020-06-10 18:30:41</sys_created_on>
+        <sys_db_object display_value="" name="sys_atf_step">sys_atf_step</sys_db_object>
+        <sys_id>0a0082726bb948728735780012ea2f84</sys_id>
+        <sys_metadata>33f6ac82dbd5181030b1d8c75e961937</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Field Values Validation</sys_name>
+        <sys_package display_value="CCW1856" source="x_cdltd_ccw1856">b5a05473908010107f4468f7a3a96f5c</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="CCW1856">b5a05473908010107f4468f7a3a96f5c</sys_scope>
+        <sys_scope_delete display_value="">c342593af4a2410681f0669efc1611a4</sys_scope_delete>
+        <sys_update_name>sys_atf_step_33f6ac82dbd5181030b1d8c75e961937</sys_update_name>
+        <sys_update_version display_value="sys_atf_step_33f6ac82dbd5181030b1d8c75e961937">3bf6ac82dbd5181030b1d8c75e96193a</sys_update_version>
+        <sys_updated_by>laurent.rochette@snc</sys_updated_by>
+        <sys_updated_on>2020-06-10 18:30:41</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

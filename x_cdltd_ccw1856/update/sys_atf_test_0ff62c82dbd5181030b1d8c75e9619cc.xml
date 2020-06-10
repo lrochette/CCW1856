@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_test">
+    <sys_atf_test action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <copied_from display_value="CCW1956 Pipeline">dabd1b06d50110107f442a7f35ef2d00</copied_from>
+        <description>Verify we have at least 1 test for the scoped app</description>
+        <enable_parameterized_testing>false</enable_parameterized_testing>
+        <name>CCW1856 Tests</name>
+        <parameters/>
+        <remember/>
+        <sys_class_name>sys_atf_test</sys_class_name>
+        <sys_created_by>laurent.rochette@snc</sys_created_by>
+        <sys_created_on>2020-06-10 18:26:16</sys_created_on>
+        <sys_id>0ff62c82dbd5181030b1d8c75e9619cc</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>CCW1856 Tests</sys_name>
+        <sys_package display_value="CCW1856" source="x_cdltd_ccw1856">b5a05473908010107f4468f7a3a96f5c</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="CCW1856">b5a05473908010107f4468f7a3a96f5c</sys_scope>
+        <sys_update_name>sys_atf_test_0ff62c82dbd5181030b1d8c75e9619cc</sys_update_name>
+        <sys_updated_by>laurent.rochette@snc</sys_updated_by>
+        <sys_updated_on>2020-06-10 18:45:17</sys_updated_on>
+    </sys_atf_test>
+    <sys_variable_value action="delete_multiple" query="document_key=0ff62c82dbd5181030b1d8c75e9619cc"/>
+</record_update>

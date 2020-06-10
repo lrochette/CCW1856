@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_step">
+    <sys_atf_step action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <copied_from/>
+        <description>Validate there is at least one record in 'sys_atf_test' matching query:
+Application = CCW1856
+With a failure timeout of 5 Seconds</description>
+        <display_name>Record Query</display_name>
+        <inputs/>
+        <mugshots_cache_json/>
+        <notes/>
+        <order>2</order>
+        <snapshot/>
+        <step_config display_value="Record Query">2d82e3c7531400109e02ddeeff7b12a7</step_config>
+        <sys_class_name>sys_atf_step</sys_class_name>
+        <sys_created_by>laurent.rochette@snc</sys_created_by>
+        <sys_created_on>2020-06-10 18:44:53</sys_created_on>
+        <sys_id>9b2be046dbd5181030b1d8c75e96193f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Record Query</sys_name>
+        <sys_package display_value="CCW1856" source="x_cdltd_ccw1856">b5a05473908010107f4468f7a3a96f5c</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="CCW1856">b5a05473908010107f4468f7a3a96f5c</sys_scope>
+        <sys_update_name>sys_atf_step_9b2be046dbd5181030b1d8c75e96193f</sys_update_name>
+        <sys_updated_by>laurent.rochette@snc</sys_updated_by>
+        <sys_updated_on>2020-06-10 18:44:53</sys_updated_on>
+        <table>sys_atf_test</table>
+        <test display_value="CCW1856 test 3">fcbaac06dbd5181030b1d8c75e9619ed</test>
+        <timeout>1970-01-01 00:00:05</timeout>
+        <warning_message/>
+    </sys_atf_step>
+    <sys_variable_value action="delete_multiple" query="document_key=9b2be046dbd5181030b1d8c75e96193f"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>9b2be046dbd5181030b1d8c75e96193f</document_key>
+        <order>400</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>laurent.rochette@snc</sys_created_by>
+        <sys_created_on>2020-06-10 18:44:53</sys_created_on>
+        <sys_id>273be046dbd5181030b1d8c75e96198f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>laurent.rochette@snc</sys_updated_by>
+        <sys_updated_on>2020-06-10 18:44:53</sys_updated_on>
+        <value>sys_scope=b5a05473908010107f4468f7a3a96f5c^EQ</value>
+        <variable display_value="">915990ab531000109e02ddeeff7b12f8</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>9b2be046dbd5181030b1d8c75e96193f</document_key>
+        <order>300</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>laurent.rochette@snc</sys_created_by>
+        <sys_created_on>2020-06-10 18:44:53</sys_created_on>
+        <sys_id>633be046dbd5181030b1d8c75e96198f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>laurent.rochette@snc</sys_updated_by>
+        <sys_updated_on>2020-06-10 18:44:53</sys_updated_on>
+        <value>sys_atf_test</value>
+        <variable display_value="">78b8d86b531000109e02ddeeff7b12f3</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>9b2be046dbd5181030b1d8c75e96193f</document_key>
+        <order>200</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>laurent.rochette@snc</sys_created_by>
+        <sys_created_on>2020-06-10 18:44:53</sys_created_on>
+        <sys_id>ab3be046dbd5181030b1d8c75e96198e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>laurent.rochette@snc</sys_updated_by>
+        <sys_updated_on>2020-06-10 18:44:53</sys_updated_on>
+        <value>records_match_query</value>
+        <variable display_value="">b86c0427531000109e02ddeeff7b1227</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>9b2be046dbd5181030b1d8c75e96193f</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>laurent.rochette@snc</sys_created_by>
+        <sys_created_on>2020-06-10 18:44:53</sys_created_on>
+        <sys_id>af3be046dbd5181030b1d8c75e96198e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>laurent.rochette@snc</sys_updated_by>
+        <sys_updated_on>2020-06-10 18:44:53</sys_updated_on>
+        <value>0</value>
+        <variable display_value="">02fb0027531000109e02ddeeff7b120b</variable>
+    </sys_variable_value>
+</record_update>
