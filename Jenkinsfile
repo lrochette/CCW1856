@@ -168,6 +168,9 @@ pipeline {
           def strArray="${atf_result_json.result.test_suite_duration}".split();
           String atf_duration = strArray[0];
 
+          atf_result_json = null;
+          atf_result_response = null;
+          
           println("Getting detailled individuals test results")
           def tc_response = httpRequest url: "${TEST_INSTANCE}/api/now/table/sys_atf_test_resultfoooo?parent="+progress_result
 /*
