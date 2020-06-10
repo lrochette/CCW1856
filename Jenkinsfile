@@ -169,7 +169,7 @@ pipeline {
           String atf_duration = strArray[0];
 
           println("Getting detailled individuals test results")
-          def tc_response = httpRequest authentication: "SN-lrtest1", acceptType: 'application/json', contentType: 'application/json', httpMode: 'GET', url: "${TEST_INSTANCE}/api/now/table/sys_atf_test_result?parent="+progress_result
+          def tc_response = httpRequest authentication: "SN-lrtest1", url: "${TEST_INSTANCE}/api/now/table/sys_atf_test_result?parent="+progress_result
 /*
           def detailled_results_json = (new JsonSlurper().parseText(detailled_results_response.content))
           println("TC Results: ${detailled_results_response.content}")
