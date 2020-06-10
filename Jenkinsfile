@@ -1,5 +1,6 @@
 import groovy.json.JsonSlurper
 import groovy.time.TimeCategory.*
+import java.time.format.DateTimeFormatter
 import java.time.*
 
 pipeline {
@@ -188,15 +189,15 @@ pipeline {
           xmlStr += """<testsuite name="${atf_suite_name}"
     failures="${atf_failure_count} tests="${atf_total_count} time="${atf_duration}" >\n"""
 
+          DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
+          LocalDate orig=LocalDate.parse("1970-01-01 00:00:00", dateFormat)
           // loop on each test case
           detailled_results_json.result.each { tc->
             println("  parsing ${tc.test_name}")
             // duration is returned as a date ???
-            def origDate="1970-01-01 00:00:00"
             def duration=groovy.time.TimeCategory.minus(
-              new SimpleDateFormat('yyyy-MM-dd HH:mm:ss').parse(tc.run_time),
-              new SimpleDateFormat('yyyy-MM-dd HH:mm:ss').parse(orig),
-            );
+              LocalDate.parse(tc.run_time, dateFormat), orig);
+            
             def tc_duration=duration.getSeconds()+60*duration.getMinutes()+3600*duration.getHours()
             xmlStr += """  <testcase name="${tc.test_name}" classname="${tc.test_name}" status="${tc.status}" time="${tc_duration}">
   </testcase>\n"""
