@@ -13,6 +13,7 @@ pipeline {
   }
 
   stages {
+    /*
     stage('build') {
       steps {
         snDevOpsStep()
@@ -82,7 +83,7 @@ pipeline {
         }
       }
     }
-
+*/
     stage ('test') {
       steps {
         snDevOpsStep()
@@ -170,7 +171,7 @@ pipeline {
           println("Getting detailled individuals test results")
           def detailled_results_response = httpRequest authentication: "SN-lrtest1", acceptType: 'APPLICATION_JSON', contentType: 'APPLICATION_JSON', httpMode: 'GET', url: "${TEST_INSTANCE}/api/now/table/sys_atf_test_result?parent="+progress_result
           def detailled_results_json = (new JsonSlurper().parseText(detailled_results_response))
-          prtinln("TC Results: ${detailled_results_response}")
+          println("TC Results: ${detailled_results_response}")
           echo "Creating ATF result folder ${ATF_FOLDER}"
           fileOperations([folderCreateOperation("${ATF_FOLDER}")])
           echo "Saving Results into ${ATF_FILE_RESULT}"
