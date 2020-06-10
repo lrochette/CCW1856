@@ -172,7 +172,7 @@ pipeline {
           def detailled_results_response = httpRequest authentication: "SN-lrtest1", acceptType: 'APPLICATION_JSON', contentType: 'APPLICATION_JSON', httpMode: 'GET', url: "${TEST_INSTANCE}/api/now/table/sys_atf_test_result?parent="+progress_result
 /*
           def detailled_results_json = (new JsonSlurper().parseText(detailled_results_response.content))
-          println("TC Results: ${detailled_results_response}")
+          println("TC Results: ${detailled_results_response.content}")
           echo "Creating ATF result folder ${ATF_FOLDER}"
           fileOperations([folderCreateOperation("${ATF_FOLDER}")])
           echo "Saving Results into ${ATF_FILE_RESULT}"
@@ -197,7 +197,7 @@ pipeline {
           println ("Final XML:\n $xmlStr\n")
 
           writeFile file: ATF_FILE_RESULT, text: xmlStr
-*/
+
           if (atf_result_status != "success" && atf_result_status != "success_with_warnings") {
               currentBuild.description += "Stopping the build - ATF suite run is not successful \n\n"
               error('Stopping the build because ATF suite run is not successful')
@@ -214,7 +214,7 @@ pipeline {
 
           atf_result_json = null;
           atf_result_response = null;
-
+*/
         }   // script in test
 
       }     // steps in test
