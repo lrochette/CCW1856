@@ -1,4 +1,5 @@
 import groovy.json.JsonSlurper
+import groovy.time.TimeCategory.*
 
 pipeline {
   agent any
