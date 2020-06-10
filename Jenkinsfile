@@ -175,7 +175,7 @@ pipeline {
           atf_result_response = null;
 
           println("Getting detailled individuals test results")
-          def tc_response = httpRequest url: "${TEST_INSTANCE}/api/now/table/sys_atf_test_resultparent="+progress_result
+          def tc_response = httpRequest authentication: "SN-lrtest1", acceptType: 'APPLICATION_JSON', contentType: 'APPLICATION_JSON', httpMode: 'GET',url: "${TEST_INSTANCE}/api/now/table/sys_atf_test_resultparent="+progress_result
 
           def detailled_results_json = (new JsonSlurper().parseText(tc_response.content))
           println("TC Results: ${tc_response.content}")
