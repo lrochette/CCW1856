@@ -194,8 +194,8 @@ pipeline {
             // duration is returned as a date ???
             def origDate="1970-01-01 00:00:00"
             def duration=groovy.time.TimeCategory.minus(
-              Date.parse("yyyy-MM-dd hh:mm:ss", tc.run_time),
-              Date.parse("yyyy-MM-dd hh:mm:ss", orig),
+              new Date(tc.run_time),
+              new Date(orig),
             );
             def tc_duration=duration.getSeconds()+60*duration.getMinutes()+3600*duration.getHours()
             xmlStr += """  <testcase name="${tc.test_name}" classname="${tc.test_name}" status="${tc.status}" time="${tc_duration}">
