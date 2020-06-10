@@ -170,12 +170,10 @@ pipeline {
           println("Getting detailled individuals test results")
           def detailled_results_response = httpRequest authentication: "SN-lrtest1", acceptType: 'APPLICATION_JSON', contentType: 'APPLICATION_JSON', httpMode: 'GET', url: "${TEST_INSTANCE}/api/now/table/sys_atf_test_result?parent="+progress_result
           def detailled_results_json = (new JsonSlurper().parseText(detailled_results_response))
-
+          prtinln("TC Results: ${detailled_results_response}")
           echo "Creating ATF result folder ${ATF_FOLDER}"
           fileOperations([folderCreateOperation("${ATF_FOLDER}")])
           echo "Saving Results into ${ATF_FILE_RESULT}"
-          def runtimeStr=tc.run_time
-          def runtime=runTimeStr.split()[0]
           def xmlStr='<?xml version="1.0" encoding="UTF-8"?>\n'
           xmlStr += """<testsuite name="${atf_result_json.result.test_suite_name}"
     failures="${atf_failure_count} tests="${atf_total_count} time="${atf_duration}" >\n"""
@@ -183,13 +181,20 @@ pipeline {
           // loop on each test case
           detailled_results_json.result.each { tc->
             println("  parsing ${tc.test_name}")
-            xmlStr += """  <testcase name="${tc.test_name}" classname="${tc.test_name}" status="${tc.status}" time="${atf_duration}">
+            // duration is returned as a date ???
+            def origDate="1970-01-01 00:00:00"
+            def duration=groovy.time.TimeCategory.minus(
+              Date.parse("yyyy-MM-dd hh:mm:ss", tc.run_time),
+              Date.parse("yyyy-MM-dd hh:mm:ss", orig),
+            );
+            def tc_duration=duration.getSeconds()+60*duration.getMinutes()+3600*duration.getHours()
+            xmlStr += """  <testcase name="${tc.test_name}" classname="${tc.test_name}" status="${tc.status}" time="${tc_duration}">
   </testcase>\n"""
           }
           xmlStr += "</testsuite>\n"
+          println ("Final XML:\n $xmlStr\n")
 
           writeFile file: ATF_FILE_RESULT, text: xmlStr
-          println ("Final XML:\n $xmlStr\n")
 
           if (atf_result_status != "success" && atf_result_status != "success_with_warnings") {
               currentBuild.description += "Stopping the build - ATF suite run is not successful \n\n"
