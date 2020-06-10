@@ -178,11 +178,11 @@ pipeline {
           def tc_response = httpRequest authentication: "SN-lrtest1", acceptType: 'APPLICATION_JSON', contentType: 'APPLICATION_JSON', httpMode: 'GET',url: "${TEST_INSTANCE}/api/now/table/sys_atf_test_result?parent="+progress_result
 
           def detailled_results_json = (new JsonSlurper().parseText(tc_response.content))
-          println("TC Results: ${tc_response.content}")
+
           echo "Creating ATF result folder ${ATF_FOLDER}"
           fileOperations([folderCreateOperation("${ATF_FOLDER}")])
           echo "Saving Results into ${ATF_FILE_RESULT}"
-    /*      def xmlStr='<?xml version="1.0" encoding="UTF-8"?>\n'
+          def xmlStr='<?xml version="1.0" encoding="UTF-8"?>\n'
           xmlStr += """<testsuite name="${atf_suite_name}"
     failures="${atf_failure_count} tests="${atf_total_count} time="${atf_duration}" >\n"""
 
@@ -216,7 +216,7 @@ pipeline {
           currentBuild.description += "Test Suite total run duration is : $atf_duration\n"
           currentBuild.description += "Test Suite total success count is : ${atf_success_count} \n"
 
-*/
+
         }   // script in test
 
       }     // steps in test
