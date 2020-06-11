@@ -179,7 +179,6 @@ pipeline {
           // Save result as JUnit
           println("Getting detailled individuals test results")
           def tc_response = httpRequest authentication: "SN-lrtest1", acceptType: 'APPLICATION_JSON', contentType: 'APPLICATION_JSON', httpMode: 'GET',url: "${TEST_INSTANCE}/api/now/table/sys_atf_test_result?parent="+progress_result
-
           def detailled_results_json = (new JsonSlurper().parseText(tc_response.content))
 
           echo "Creating ATF result folder ${ATF_FOLDER}"
@@ -218,6 +217,7 @@ pipeline {
 
           tc_response = null;
           detailled_results_json = null;
+          println ("End of test\n")
         }   // script in test
 
       }     // steps in test
