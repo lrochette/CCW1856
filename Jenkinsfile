@@ -192,7 +192,7 @@ pipeline {
           //def orig=dateFormat.parse("1970-01-01 00:00:00").getTime()
           // loop on each test case
           detailled_results_json.result.each { tc->
-            println("  parsing ${tc.test_name}")
+            println("  parsing ${tc.test_name} -> runtime (${tc.run_time})")
             // duration is returned as a date ???
             def tc_duration=dateFormat.parse(tc.run_time).getTime() / 1000;
 
