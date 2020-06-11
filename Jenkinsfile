@@ -185,8 +185,7 @@ pipeline {
           fileOperations([folderCreateOperation("${ATF_FOLDER}")])
           echo "Saving Results into ${ATF_FILE_RESULT}"
           def xmlStr='<?xml version="1.0" encoding="UTF-8"?>\n'
-          xmlStr += """<testsuite name="${atf_suite_name}"
-    failures="${atf_failure_count} tests="${atf_total_count} time="${atf_duration}" >\n"""
+          xmlStr += """<testsuite name="${atf_suite_name}" failures="${atf_failure_count}" tests="${atf_total_count}" time="${atf_duration}">\n"""
 
           SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
           def orig=dateFormat.parse("1970-01-01 00:00:00").getTime()
@@ -196,9 +195,8 @@ pipeline {
             // duration is returned as a date ???
             def tc_duration=(dateFormat.parse(tc.run_time).getTime() - orig) / 1000;
 
-            xmlStr += """  <testcase name="${tc.test_name}" classname="${tc.test_name}" status="${tc.status}" time="${tc_duration}">
-  </testcase>\n"""
-          }
+            xmlStr += """  <testcase name="${tc.test_name}" classname="${tc.test_name}" status="${tc.status}" time="${tc_duration}"/>\n"""
+          }     // end of individual test loop
           xmlStr += "</testsuite>\n"
           println ("Final XML:\n $xmlStr\n")
 
