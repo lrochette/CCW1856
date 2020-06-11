@@ -220,12 +220,12 @@ pipeline {
         }   // script in test
 
       }     // steps in test
-/*      post {
+     post {
           success {
               junit "${ATF_FILE_RESULT}"
           }
       }
-*/
+
     }       // stage test
 /*
     stage('publish') {
