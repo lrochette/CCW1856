@@ -164,8 +164,8 @@ pipeline {
           def atf_result_json = (new JsonSlurper().parseText(atf_result_response.content))
 
           String atf_result_status = "${atf_result_json.result.test_suite_status}";
-          def atf_success_count = atf_result_json.result.rolledup_test_success_count;
-          def atf_failure_count = atf_result_json.result.rolledup_test_failure_count;
+          def atf_success_count = "${atf_result_json.result.rolledup_test_success_count}".toInteger();
+          def atf_failure_count = "${atf_result_json.result.rolledup_test_failure_count}".toInteger();
           def atf_total_count = atf_success_count + atf_failure_count;
           def atf_suite_name = "${atf_result_json.result.test_suite_name}"
           def atf_suite_url = "${atf_result_json.result.links.results.url}"
