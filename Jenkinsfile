@@ -204,7 +204,7 @@ pipeline {
           writeFile file: ATF_FILE_RESULT, text: xmlStr
 
           // Let's return the result either way and let the Change policyt decide
-          /
+          //
           // if (atf_result_status != "success" && atf_result_status != "success_with_warnings") {
           //     currentBuild.description += "Stopping the build - ATF suite run is not successful \n\n"
           //     error('Stopping the build because ATF suite run is not successful')
@@ -216,7 +216,8 @@ pipeline {
           currentBuild.description += "Test Suite total run duration is : $atf_duration\n"
           currentBuild.description += "Test Suite total success count is : ${atf_success_count} \n"
 
-
+          tc_response = null;
+          detailled_results_json = null;
         }   // script in test
 
       }     // steps in test
