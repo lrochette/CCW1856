@@ -15,7 +15,7 @@ pipeline {
   }
 
   stages {
-    /*
+
     stage('build') {
       steps {
         snDevOpsStep()
@@ -85,7 +85,7 @@ pipeline {
         }
       }
     }
-*/
+
     stage ('test') {
       steps {
         snDevOpsStep()
@@ -176,6 +176,7 @@ pipeline {
           atf_result_json = null;
           atf_result_response = null;
 
+          // Save result as JUnit
           println("Getting detailled individuals test results")
           def tc_response = httpRequest authentication: "SN-lrtest1", acceptType: 'APPLICATION_JSON', contentType: 'APPLICATION_JSON', httpMode: 'GET',url: "${TEST_INSTANCE}/api/now/table/sys_atf_test_result?parent="+progress_result
 
@@ -202,14 +203,15 @@ pipeline {
 
           writeFile file: ATF_FILE_RESULT, text: xmlStr
 
-          if (atf_result_status != "success" && atf_result_status != "success_with_warnings") {
-              currentBuild.description += "Stopping the build - ATF suite run is not successful \n\n"
-              error('Stopping the build because ATF suite run is not successful')
-              return
-          }
+          // Let's return the result either way and let the Change policyt decide
+          /
+          // if (atf_result_status != "success" && atf_result_status != "success_with_warnings") {
+          //     currentBuild.description += "Stopping the build - ATF suite run is not successful \n\n"
+          //     error('Stopping the build because ATF suite run is not successful')
+          //     return
+          // }
 
-          // Save result as JUnit
-          currentBuild.description += "ATF Tests ran successfully \n\n Test Suite Name : ${atf_suite_name} \n"
+          currentBuild.description += "ATF Tests ran with ${atf_result_status} \n\n Test Suite Name : ${atf_suite_name} \n"
           currentBuild.description += "Test Suite result URL : ${atf_suite_url} \n"
           currentBuild.description += "Test Suite total run duration is : $atf_duration\n"
           currentBuild.description += "Test Suite total success count is : ${atf_success_count} \n"
@@ -225,7 +227,7 @@ pipeline {
       }
 
     }       // stage test
-/*
+
     stage('publish') {
       steps {
         snDevOpsStep()
@@ -293,8 +295,7 @@ pipeline {
         }   // script in publish
       }     // steps in publish
     }       // stage publish
-*/
-/*
+
     stage('prod') {
       steps {
         snDevOpsStep()
@@ -367,6 +368,6 @@ pipeline {
       }
 
     }       // stage prod
-    */
+
   }         // stages
 }           // pipeline
